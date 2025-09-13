@@ -43,12 +43,12 @@ const Index = () => {
     setEncodedLetters(encoded);
   };
 
-  const ColorSquare = ({ color }: { color: string }) => {
+  const ColorSquare = ({ color, muted = false }: { color: string; muted?: boolean }) => {
     const colorMap = {
-      'R': 'bg-lang-red',
-      'G': 'bg-lang-green',
-      'B': 'bg-lang-blue',
-      'Y': 'bg-lang-yellow',
+      'R': muted ? 'bg-lang-red/30' : 'bg-lang-red',
+      'G': muted ? 'bg-lang-green/30' : 'bg-lang-green', 
+      'B': muted ? 'bg-lang-blue/30' : 'bg-lang-blue',
+      'Y': muted ? 'bg-lang-yellow/30' : 'bg-lang-yellow',
       '?': 'bg-muted'
     };
     
@@ -234,7 +234,7 @@ const Index = () => {
                                   {index < 3 && (
                                     <div className="flex flex-col gap-0">
                                       {['B','B','B'].map((color, i) => (
-                                        <ColorSquare key={i} color={color} />
+                                        <ColorSquare key={i} color={color} muted={true} />
                                       ))}
                                     </div>
                                   )}
@@ -284,7 +284,7 @@ const Index = () => {
                                   {index < 3 && (
                                     <div className="flex flex-col gap-0">
                                       {['Y','Y','Y'].map((color, i) => (
-                                        <ColorSquare key={i} color={color} />
+                                        <ColorSquare key={i} color={color} muted={true} />
                                       ))}
                                     </div>
                                   )}
