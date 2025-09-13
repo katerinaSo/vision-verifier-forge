@@ -182,6 +182,45 @@ const Index = () => {
                 ))}
               </div>
               
+              {/* Special demonstration for MAMA */}
+              {inputText.toUpperCase().includes('MAMA') && (
+                <div className="mt-8 space-y-6">
+                  <h4 className="text-center font-semibold text-lg">Word Variations: MAMA - Emotional Keys</h4>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Nurturing Key - soft patterns */}
+                    <WordGrid
+                      keyType="major"
+                      spacing="gap-0"
+                      letters={[
+                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "gentle embrace" },
+                        { letter: "A", pattern: ['Y', 'R', 'Y'], meaning: "first breath" },
+                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "gentle embrace" },
+                        { letter: "A", pattern: ['Y', 'R', 'Y'], meaning: "first breath" },
+                      ]}
+                    />
+                    
+                    {/* Protective Key - strong patterns */}
+                    <WordGrid
+                      keyType="minor"
+                      spacing="gap-0"
+                      letters={[
+                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "fierce protection" },
+                        { letter: "A", pattern: ['R', 'Y', 'R'], meaning: "warrior light" },
+                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "fierce protection" },
+                        { letter: "A", pattern: ['R', 'Y', 'R'], meaning: "warrior light" },
+                      ]}
+                    />
+                  </div>
+                  
+                  <div className="text-center text-sm text-muted-foreground space-y-2">
+                    <p>Same word, different emotional resonance through pattern choice:</p>
+                    <p><span className="text-lang-yellow font-medium">Nurturing:</span> G-Y flows create soft, life-giving energy</p>
+                    <p><span className="text-lang-blue font-medium">Protective:</span> R-B patterns create strong, defensive boundaries</p>
+                  </div>
+                </div>
+              )}
+
               {/* Special demonstration for OM */}
               {inputText.toUpperCase().includes('OM') && (
                 <div className="mt-8 space-y-6">
