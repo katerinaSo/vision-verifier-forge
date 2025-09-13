@@ -569,204 +569,58 @@ const Index = () => {
           </Card>
         )}
 
-        {/* Sacred MOO Section */}
+        {/* Complete Visual Language Dictionary */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-center">Sacred Universe Voice</CardTitle>
+            <CardTitle className="text-center">Complete Visual Language Dictionary</CardTitle>
+            <p className="text-center text-muted-foreground">All 16 three-color pattern combinations</p>
           </CardHeader>
           <CardContent>
-            <div className="max-w-2xl mx-auto space-y-6">
-              <div className="text-center space-y-2">
-                <h3 className="text-lg font-semibold">The Cosmic Cow Speaks</h3>
-                <p className="text-sm text-muted-foreground italic">
-                  "Imagine a sacred universe as a cow that says MOO" - Enter the cosmic voice below
-                </p>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 justify-center">
+                {Object.entries(letterEncodings).filter(([letter]) => letter !== ' ').map(([letter, data]) => (
+                  <div key={letter} className="flex flex-col items-center space-y-3">
+                    <Badge variant="outline" className="text-lg font-bold w-10 h-10 flex items-center justify-center">
+                      {letter}
+                    </Badge>
+                    <div className="flex gap-2">
+                      {data.patterns.map((pattern, patternIndex) => (
+                        <div key={patternIndex} className="flex flex-col items-center space-y-1">
+                          <div className="flex flex-col gap-0.5">
+                            {pattern.split('-').map((color, i) => (
+                              <ColorSquare key={i} color={color} voice="normal" />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground text-center max-w-24 leading-tight">
+                      {data.meaning}
+                    </p>
+                  </div>
+                ))}
               </div>
               
-              <div className="space-y-4">
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    placeholder="MOO, MOOO, MOOOO..."
-                    className="flex-1 px-3 py-2 border rounded-md bg-background"
-                    value={cosmicVoice}
-                    onChange={(e) => setCosmicVoice(e.target.value.toUpperCase())}
-                  />
-                  <Button
-                    onClick={translateCosmicVoice}
-                    disabled={!cosmicVoice.trim()}
-                  >
-                    Translate
-                  </Button>
-                </div>
-                
-                {cosmicGrid.length > 0 && (
-                  <div className="mt-6 space-y-8">
-                    <h4 className="text-center font-medium text-lg">Sacred Translation: {cosmicVoice}</h4>
-                    
-                    {/* Standard Keys - Major/Minor */}
-                    <div className="space-y-3">
-                      <div className="text-center">
-                        <p className="text-sm font-medium text-muted-foreground">
-                          Standard Keys - Creation Hymn & Being Meditation
-                        </p>
-                      </div>
-                      
-                      <div className="flex justify-center">
-                        <div className="p-6 rounded-lg bg-gradient-to-b from-lang-yellow/10 via-transparent to-lang-blue/10 border border-muted/30">
-                            {/* Major Key Row - Bold voice */}
-                            <div className="flex gap-0 justify-center mb-0">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`major-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`major-${letterIndex}-${colorIndex}`} color={color} voice={letter.voice === 'whisper' ? 'bold' : 'bold'} />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                            
-                            {/* Minor Key Row - Using individual voices */}
-                            <div className="flex gap-0 justify-center">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`minor-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`minor-${letterIndex}-${colorIndex}`} color={color} voice={letter.voice as 'normal' | 'whisper'} />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                        </div>
-                      </div>
+              <div className="mt-8 text-center space-y-4">
+                <div className="border-t pt-6">
+                  <h4 className="font-semibold mb-4">DNA-Style Complementary Binding</h4>
+                  <div className="grid grid-cols-2 gap-4 max-w-md mx-auto text-sm">
+                    <div className="p-3 rounded-lg bg-lang-red/10 border border-lang-red/20">
+                      <span className="font-mono">R ↔ G</span>
+                      <p className="text-xs text-muted-foreground">Red binds Green</p>
                     </div>
-
-                    {/* Alternative Key Interpretations */}
-                    <div className="space-y-6">
-                      <div className="text-center">
-                        <p className="text-sm font-medium text-muted-foreground">
-                          Alternative Key Interpretations - Different Value Weights
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          Same cosmic voice, different visual weight relationships
-                        </p>
-                      </div>
-
-                      {/* Deep Earth Keys */}
-                      <div className="space-y-2">
-                        <p className="text-center text-sm font-medium">Deep Earth Keys - Heavy Values</p>
-                        <div className="flex justify-center">
-                          <div className="p-4 rounded-lg bg-gradient-to-b from-lang-green/10 via-transparent to-lang-red/10 border border-muted/30">
-                            {/* Deep Earth Major */}
-                            <div className="flex gap-0 justify-center mb-0">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`earth-major-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`earth-major-${letterIndex}-${colorIndex}`} color={color} voice="deep" />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                            
-                            {/* Deep Earth Minor */}
-                            <div className="flex gap-0 justify-center">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`earth-minor-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`earth-minor-${letterIndex}-${colorIndex}`} color={color} voice="muted" />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Light Air Keys */}
-                      <div className="space-y-2">
-                        <p className="text-center text-sm font-medium">Light Air Keys - Ethereal Values</p>
-                        <div className="flex justify-center">
-                          <div className="p-4 rounded-lg bg-gradient-to-b from-lang-yellow/5 via-transparent to-lang-blue/5 border border-muted/20">
-                            {/* Light Air Major */}
-                            <div className="flex gap-0 justify-center mb-0">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`air-major-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`air-major-${letterIndex}-${colorIndex}`} color={color} voice="gentle" />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                            
-                            {/* Light Air Minor */}
-                            <div className="flex gap-0 justify-center">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`air-minor-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`air-minor-${letterIndex}-${colorIndex}`} color={color} voice="whisper" />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Fire & Water Keys */}
-                      <div className="space-y-2">
-                        <p className="text-center text-sm font-medium">Fire & Water Keys - Extreme Contrast</p>
-                        <div className="flex justify-center">
-                          <div className="p-4 rounded-lg bg-gradient-to-b from-lang-red/10 via-transparent to-lang-blue/10 border border-muted/30">
-                            {/* Fire Major */}
-                            <div className="flex gap-0 justify-center mb-0">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`fire-major-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`fire-major-${letterIndex}-${colorIndex}`} color={color} voice="accent" />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                            
-                            {/* Water Minor */}
-                            <div className="flex gap-0 justify-center">
-                              {cosmicGrid.map((letter, letterIndex) => (
-                                <div key={`water-minor-${letterIndex}`} className="flex flex-col">
-                                  <div className="flex flex-col gap-0">
-                                    {letter.pattern.map((color, colorIndex) => (
-                                      <ColorSquare key={`water-minor-${letterIndex}-${colorIndex}`} color={color} voice="soft" />
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 text-center p-4 rounded-lg bg-card/30 border-dashed border">
-                      <p className="text-sm text-muted-foreground">
-                        The sacred mantra of existence: {cosmicGrid.map(l => l.meaning).join(' → ')}
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-2">
-                        Two expressions of the same cosmic truth - one singing outward, one vibrating inward
-                      </p>
+                    <div className="p-3 rounded-lg bg-lang-blue/10 border border-lang-blue/20">
+                      <span className="font-mono">B ↔ Y</span>
+                      <p className="text-xs text-muted-foreground">Blue binds Yellow</p>
                     </div>
                   </div>
-                )}
+                </div>
+                
+                <div className="p-4 rounded-lg bg-card/30 border">
+                  <p className="text-sm text-muted-foreground">
+                    Each letter exists in two complementary forms, creating a living language where meaning shifts through harmonic relationships between passion-growth and depth-illumination
+                  </p>
+                </div>
               </div>
             </div>
           </CardContent>
