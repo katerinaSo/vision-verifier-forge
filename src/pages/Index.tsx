@@ -167,14 +167,18 @@ const Index = () => {
               <CardTitle>Encoded Text</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
-              <div className="flex flex-wrap gap-4 justify-center mb-6">
+              <div className="flex gap-0 justify-center mb-6">
                 {encodedLetters.map((letter, index) => (
-                  <VerticalLetter
-                    key={index}
-                    letter={letter.letter}
-                    pattern={letter.pattern}
-                    meaning={letter.meaning}
-                  />
+                  <div key={index} className="flex flex-col items-center">
+                    <Badge variant="outline" className="text-sm font-bold mb-1">
+                      {letter.letter}
+                    </Badge>
+                    <div className="flex flex-col">
+                      {letter.pattern.map((color, i) => (
+                        <ColorSquare key={i} color={color} />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
               
