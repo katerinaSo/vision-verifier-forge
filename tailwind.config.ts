@@ -57,6 +57,16 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        lang: {
+          red: "hsl(var(--lang-red))",
+          green: "hsl(var(--lang-green))",
+          blue: "hsl(var(--lang-blue))",
+          yellow: "hsl(var(--lang-yellow))",
+          "red-light": "hsl(var(--lang-red-light))",
+          "green-light": "hsl(var(--lang-green-light))",
+          "blue-light": "hsl(var(--lang-blue-light))",
+          "yellow-light": "hsl(var(--lang-yellow-light))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

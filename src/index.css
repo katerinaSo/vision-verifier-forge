@@ -38,6 +38,18 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Visual Language Color Tokens */
+    --lang-red: 0 85% 60%;
+    --lang-green: 120 60% 50%;
+    --lang-blue: 240 80% 55%;
+    --lang-yellow: 45 95% 55%;
+    
+    /* Monolith variations */
+    --lang-red-light: 0 75% 70%;
+    --lang-green-light: 120 50% 60%;
+    --lang-blue-light: 240 70% 65%;
+    --lang-yellow-light: 45 85% 65%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
