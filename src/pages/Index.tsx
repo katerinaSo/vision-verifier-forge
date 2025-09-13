@@ -192,7 +192,7 @@ const Index = () => {
                     <div className="space-y-3">
                       <h5 className="text-center font-semibold text-lg">MAMA - BBB Space Key</h5>
                       <div className="p-6 rounded-lg border bg-card/50">
-                        <div className="flex flex-col gap-2 items-center">
+                        <div className="flex flex-col gap-0 items-center">
                           {[0,1,2,3].map(row => (
                             <div key={row} className="flex gap-0">
                               {[
@@ -224,7 +224,7 @@ const Index = () => {
                                 <div key={index} className="flex gap-0">
                                   <div className="flex gap-0">
                                     {patterns.map((pattern, letterIndex) => (
-                                      <div key={letterIndex} className="flex flex-col">
+                                      <div key={letterIndex} className="flex flex-col gap-0">
                                         {pattern.map((color, i) => (
                                           <ColorSquare key={i} color={color} />
                                         ))}
@@ -232,7 +232,7 @@ const Index = () => {
                                     ))}
                                   </div>
                                   {index < 3 && (
-                                    <div className="flex flex-col mx-1">
+                                    <div className="flex flex-col gap-0">
                                       {['B','B','B'].map((color, i) => (
                                         <ColorSquare key={i} color={color} />
                                       ))}
@@ -250,7 +250,7 @@ const Index = () => {
                     <div className="space-y-3">
                       <h5 className="text-center font-semibold text-lg">MAMA - YYY Space Key</h5>
                       <div className="p-6 rounded-lg border bg-card/50">
-                        <div className="flex flex-col gap-2 items-center">
+                        <div className="flex flex-col gap-0 items-center">
                           {[0,1,2,3].map(row => (
                             <div key={row} className="flex gap-0">
                               {[
@@ -274,7 +274,7 @@ const Index = () => {
                                 <div key={index} className="flex gap-0">
                                   <div className="flex gap-0">
                                     {patterns.map((pattern, letterIndex) => (
-                                      <div key={letterIndex} className="flex flex-col">
+                                      <div key={letterIndex} className="flex flex-col gap-0">
                                         {pattern.map((color, i) => (
                                           <ColorSquare key={i} color={color} />
                                         ))}
@@ -282,7 +282,7 @@ const Index = () => {
                                     ))}
                                   </div>
                                   {index < 3 && (
-                                    <div className="flex flex-col mx-1">
+                                    <div className="flex flex-col gap-0">
                                       {['Y','Y','Y'].map((color, i) => (
                                         <ColorSquare key={i} color={color} />
                                       ))}
