@@ -17,9 +17,14 @@ const Index = () => {
   };
 
   const encodeText = () => {
+    console.log("Encode button clicked, inputText:", inputText);
     const letters = inputText.toUpperCase().split('').filter(char => char !== ' ');
+    console.log("Letters to encode:", letters);
+    
     const encoded = letters.map(letter => {
       const encoding = letterEncodings[letter as keyof typeof letterEncodings];
+      console.log(`Encoding for ${letter}:`, encoding);
+      
       if (encoding) {
         return {
           letter,
@@ -33,6 +38,8 @@ const Index = () => {
         meaning: 'awaiting discovery'
       };
     });
+    
+    console.log("Encoded result:", encoded);
     setEncodedLetters(encoded);
   };
 
