@@ -20,6 +20,7 @@ const Index = () => {
     'J': { patterns: ['R-Y-Y', 'G-B-B'], meaning: 'manifesting from ocean depths' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
+    ' ': { patterns: ['?-?-?', '?-?-?'], meaning: 'pause / breath / silence' },
   };
 
   const encodeText = () => {
