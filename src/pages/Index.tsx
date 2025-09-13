@@ -273,12 +273,25 @@ const Index = () => {
             <CardContent>
               <div className="flex flex-wrap gap-6 justify-center">
                 {Object.entries(letterEncodings).map(([letter, data]) => (
-                  <VerticalLetter
-                    key={letter}
-                    letter={letter}
-                    pattern={data.patterns[0].split('-')}
-                    meaning={data.meaning}
-                  />
+                  <div key={letter} className="flex flex-col items-center space-y-3">
+                    <Badge variant="outline" className="text-lg font-bold">
+                      {letter}
+                    </Badge>
+                    <div className="flex gap-4">
+                      {data.patterns.map((pattern, patternIndex) => (
+                        <div key={patternIndex} className="flex flex-col items-center space-y-1">
+                          <div className="flex flex-col gap-0.5">
+                            {pattern.split('-').map((color, i) => (
+                              <ColorSquare key={i} color={color} voice="normal" />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground text-center max-w-32">
+                      {data.meaning}
+                    </p>
+                  </div>
                 ))}
               </div>
             </CardContent>
