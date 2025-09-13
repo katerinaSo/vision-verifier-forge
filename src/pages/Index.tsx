@@ -12,7 +12,7 @@ const Index = () => {
   const letterEncodings = {
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
-    'M': { patterns: ['R-B-R'], meaning: 'discovery pattern' },
+    'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
   };
 
   const encodeText = () => {
@@ -51,21 +51,46 @@ const Index = () => {
 
   const VerticalLetter = ({ letter, pattern, meaning }: { letter: string; pattern: string[]; meaning?: string }) => (
     <div className="flex flex-col items-center space-y-1">
-      <Badge variant="outline" className="text-sm font-bold mb-2">
+      <Badge variant="outline" className="text-sm font-bold mb-1">
         {letter}
       </Badge>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-0.5">
         {pattern.map((color, i) => (
           <ColorSquare key={i} color={color} />
         ))}
       </div>
       {meaning && (
-        <p className="text-xs text-muted-foreground text-center max-w-20 mt-2">
+        <p className="text-xs text-muted-foreground text-center max-w-20 mt-1">
           {meaning}
         </p>
       )}
     </div>
   );
+
+  const WordGrid = ({ letters, keyType, spacing = "gap-2" }: { 
+    letters: { letter: string; pattern: string[]; meaning?: string }[]; 
+    keyType: 'major' | 'minor';
+    spacing?: string;
+  }) => {
+    const keyBg = keyType === 'major' ? 'bg-lang-yellow/20' : 'bg-lang-blue/20';
+    const keyBorder = keyType === 'major' ? 'border-lang-yellow' : 'border-lang-blue';
+    
+    return (
+      <div className={`p-4 rounded-lg border-2 ${keyBg} ${keyBorder}`}>
+        <h5 className="text-center font-medium mb-3 capitalize">{keyType} Key</h5>
+        <div className={`flex ${spacing} justify-center`}>
+          {letters.map((letter, index) => (
+            <VerticalLetter
+              key={index}
+              letter={letter.letter}
+              pattern={letter.pattern}
+              meaning={letter.meaning}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background p-8">
@@ -138,23 +163,36 @@ const Index = () => {
               
               {/* Special demonstration for OM */}
               {inputText.toUpperCase().includes('OM') && (
-                <div className="mt-8 p-6 border-2 border-dashed border-primary/30 rounded-lg">
-                  <h4 className="text-center font-semibold mb-4">Word Grid: OM</h4>
-                  <div className="flex gap-8 justify-center">
-                    <VerticalLetter
-                      letter="O"
-                      pattern={['B', 'R', 'B']}
-                      meaning="ember under water"
+                <div className="mt-8 space-y-6">
+                  <h4 className="text-center font-semibold text-lg">Word Grid: OM - Key Variations</h4>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Major Key - using first patterns */}
+                    <WordGrid
+                      keyType="major"
+                      spacing="gap-1"
+                      letters={[
+                        { letter: "O", pattern: ['B', 'R', 'B'], meaning: "ember under water" },
+                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "discovery pattern" },
+                      ]}
                     />
-                    <VerticalLetter
-                      letter="M"
-                      pattern={['R', 'B', 'R']}
-                      meaning="discovery pattern"
+                    
+                    {/* Minor Key - using complementary patterns */}
+                    <WordGrid
+                      keyType="minor"
+                      spacing="gap-1"
+                      letters={[
+                        { letter: "O", pattern: ['Y', 'G', 'Y'], meaning: "life surrounded by light" },
+                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "complementary flow" },
+                      ]}
                     />
                   </div>
-                  <p className="text-center text-sm text-muted-foreground mt-4">
-                    Notice the harmonic relationship: O and M create a complementary pattern
-                  </p>
+                  
+                  <div className="text-center text-sm text-muted-foreground space-y-2">
+                    <p>Notice how the keys create different harmonic relationships:</p>
+                    <p><span className="text-lang-yellow font-medium">Major:</span> B-R-B with R-B-R creates balanced tension</p>
+                    <p><span className="text-lang-blue font-medium">Minor:</span> Y-G-Y with G-Y-G flows in complementary harmony</p>
+                  </div>
                 </div>
               )}
             </CardContent>
