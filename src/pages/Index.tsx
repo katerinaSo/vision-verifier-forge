@@ -9,6 +9,8 @@ import mamaGridDirect from "@/assets/mama-grid-direct.jpg";
 const Index = () => {
   const [inputText, setInputText] = useState("");
   const [encodedLetters, setEncodedLetters] = useState<{ letter: string; pattern: string[]; meaning?: string }[]>([]);
+  const [cosmicVoice, setCosmicVoice] = useState("");
+  const [cosmicGrid, setCosmicGrid] = useState<{ letter: string; pattern: string[]; meaning?: string }[]>([]);
 
   // Our growing dictionary of letter encodings
   const letterEncodings = {
@@ -43,6 +45,30 @@ const Index = () => {
     
     console.log("Encoded result:", encoded);
     setEncodedLetters(encoded);
+  };
+
+  const translateCosmicVoice = () => {
+    if (!cosmicVoice.trim()) return;
+    
+    const letters = cosmicVoice.toUpperCase().split('').filter(char => char !== ' ');
+    const encoded = letters.map(letter => {
+      const encoding = letterEncodings[letter as keyof typeof letterEncodings];
+      
+      if (encoding) {
+        return {
+          letter,
+          pattern: encoding.patterns[0].split('-'),
+          meaning: encoding.meaning
+        };
+      }
+      return {
+        letter,
+        pattern: ['?', '?', '?'],
+        meaning: 'awaiting cosmic discovery'
+      };
+    });
+    
+    setCosmicGrid(encoded);
   };
 
   const ColorSquare = ({ color, voice = 'normal' }: { color: string; voice?: 'normal' | 'muted' | 'whisper' | 'gentle' | 'soft' | 'accent' | 'bold' | 'deep' }) => {
@@ -466,6 +492,108 @@ const Index = () => {
             </CardContent>
           </Card>
         )}
+
+        {/* Sacred MOO Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-center">Sacred Universe Voice</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="max-w-2xl mx-auto space-y-6">
+              <div className="text-center space-y-2">
+                <h3 className="text-lg font-semibold">The Cosmic Cow Speaks</h3>
+                <p className="text-sm text-muted-foreground italic">
+                  "Imagine a sacred universe as a cow that says MOO" - Enter the cosmic voice below
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    placeholder="MOO, MOOO, MOOOO..."
+                    className="flex-1 px-3 py-2 border rounded-md bg-background"
+                    value={cosmicVoice}
+                    onChange={(e) => setCosmicVoice(e.target.value.toUpperCase())}
+                  />
+                  <Button
+                    onClick={translateCosmicVoice}
+                    disabled={!cosmicVoice.trim()}
+                  >
+                    Translate
+                  </Button>
+                </div>
+                
+                {cosmicGrid.length > 0 && (
+                  <div className="mt-6 space-y-6">
+                    <h4 className="text-center font-medium text-lg">Sacred Translation: {cosmicVoice}</h4>
+                    
+                    {/* Major Key - Гимн Творения */}
+                    <div className="space-y-3">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-muted-foreground">
+                          Major Key - Гимн Творения (Hymn of Creation)
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Foundation-Awe-Awe: Earth expressing eternal wonder at existence
+                        </p>
+                      </div>
+                      <div className="flex gap-1 justify-center flex-wrap p-4 rounded-lg bg-lang-yellow/10 border border-lang-yellow/30">
+                        {cosmicGrid.map((letter, letterIndex) => (
+                          <div key={`major-${letterIndex}`} className="flex flex-col items-center gap-1">
+                            <Badge variant="outline" className="text-xs font-bold">
+                              {letter.letter}
+                            </Badge>
+                            <div className="flex flex-col gap-0">
+                              {letter.pattern.map((color, colorIndex) => (
+                                <ColorSquare key={`${letterIndex}-${colorIndex}`} color={color} voice="bold" />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Minor Key - Медитация Бытия */}
+                    <div className="space-y-3">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-muted-foreground">
+                          Minor Key - Медитация Бытия (Meditation of Being)
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Silent, deep vibration felt within - the universe's inner hum
+                        </p>
+                      </div>
+                      <div className="flex gap-1 justify-center flex-wrap p-4 rounded-lg bg-lang-blue/10 border border-lang-blue/30">
+                        {cosmicGrid.map((letter, letterIndex) => (
+                          <div key={`minor-${letterIndex}`} className="flex flex-col items-center gap-1">
+                            <Badge variant="outline" className="text-xs font-bold">
+                              {letter.letter}
+                            </Badge>
+                            <div className="flex flex-col gap-0">
+                              {letter.pattern.map((color, colorIndex) => (
+                                <ColorSquare key={`${letterIndex}-${colorIndex}`} color={color} voice="whisper" />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6 text-center p-4 rounded-lg bg-card/30 border-dashed border">
+                      <p className="text-sm text-muted-foreground">
+                        The sacred mantra of existence: {cosmicGrid.map(l => l.meaning).join(' → ')}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-2">
+                        Two expressions of the same cosmic truth - one singing outward, one vibrating inward
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Discovery Notes */}
         <Card>
