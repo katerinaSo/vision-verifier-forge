@@ -45,7 +45,7 @@ const Index = () => {
 
   const encodeText = () => {
     console.log("Encode button clicked, inputText:", inputText);
-    const letters = inputText.toUpperCase().split('').filter(char => char !== ' ');
+    const letters = inputText.toUpperCase().split('');
     console.log("Letters to encode:", letters);
     
     const encoded = letters.map(letter => {
