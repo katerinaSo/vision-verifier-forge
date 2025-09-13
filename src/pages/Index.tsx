@@ -219,80 +219,74 @@ const Index = () => {
                 <div className="mt-8 space-y-6">
                   <h4 className="text-center font-semibold text-lg">MAMA: Voices Through Saturation</h4>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Whisper Voice */}
+                  <div className="space-y-6">
+                    {/* Complete 16 MAMA Grid with Voice Variations */}
                     <div className="space-y-3">
-                      <h5 className="text-center font-medium">Whisper Voice</h5>
-                      <div className="p-4 rounded-lg border bg-card/30">
-                        <div className="flex gap-0 justify-center">
-                          {[['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']].map((pattern, letterIndex) => (
-                            <div key={letterIndex} className="flex flex-col gap-0">
-                              {pattern.map((color, i) => (
-                                <ColorSquare key={i} color={color} voice="whisper" />
+                      <h5 className="text-center font-medium">16 MAMA Variations - Each with Unique Voice</h5>
+                      <div className="p-6 rounded-lg border bg-card/30">
+                        <div className="flex flex-col gap-1 items-center">
+                          {[0,1,2,3].map(row => (
+                            <div key={row} className="flex gap-1">
+                              {[
+                                // Row 1: whisper voices
+                                { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], voice: 'whisper' },
+                                { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], voice: 'whisper' },
+                                { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], voice: 'whisper' },
+                                { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], voice: 'whisper' },
+                                
+                                // Row 2: normal voices
+                                { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], voice: 'normal' },
+                                { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']], voice: 'normal' },
+                                { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], voice: 'normal' },
+                                { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], voice: 'normal' },
+                                
+                                // Row 3: bold voices
+                                { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], voice: 'bold' },
+                                { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], voice: 'bold' },
+                                { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], voice: 'bold' },
+                                { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], voice: 'bold' },
+                                
+                                // Row 4: deep voices
+                                { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], voice: 'deep' },
+                                { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']], voice: 'deep' },
+                                { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], voice: 'deep' },
+                                { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], voice: 'deep' },
+                              ].slice(row * 4, (row + 1) * 4).map((mama, index) => (
+                                <div key={index} className="flex flex-col items-center p-2 rounded border-2 border-muted/20">
+                                  <div className="flex gap-0">
+                                    {mama.patterns.map((pattern, letterIndex) => (
+                                      <div key={letterIndex} className="flex flex-col gap-0">
+                                        {pattern.map((color, i) => (
+                                          <ColorSquare key={i} color={color} voice={mama.voice as 'whisper' | 'normal' | 'bold' | 'deep'} />
+                                        ))}
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <span className="text-xs text-muted-foreground mt-1 capitalize">{mama.voice}</span>
+                                </div>
                               ))}
                             </div>
                           ))}
                         </div>
-                        <p className="text-xs text-center text-muted-foreground mt-2">Soft, delicate tones</p>
-                      </div>
-                    </div>
-
-                    {/* Bold Voice */}
-                    <div className="space-y-3">
-                      <h5 className="text-center font-medium">Bold Voice</h5>
-                      <div className="p-4 rounded-lg border bg-card/30">
-                        <div className="flex gap-0 justify-center">
-                          {[['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']].map((pattern, letterIndex) => (
-                            <div key={letterIndex} className="flex flex-col gap-0">
-                              {pattern.map((color, i) => (
-                                <ColorSquare key={i} color={color} voice="bold" />
-                              ))}
-                            </div>
-                          ))}
+                        
+                        <div className="mt-4 text-center space-y-1">
+                          <p className="text-xs text-muted-foreground">
+                            <span className="font-medium">Row 1:</span> Whisper voice • 
+                            <span className="font-medium ml-2">Row 2:</span> Normal voice
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            <span className="font-medium">Row 3:</span> Bold voice • 
+                            <span className="font-medium ml-2">Row 4:</span> Deep voice
+                          </p>
                         </div>
-                        <p className="text-xs text-center text-muted-foreground mt-2">Strong, vibrant tones</p>
-                      </div>
-                    </div>
-
-                    {/* Deep Voice */}
-                    <div className="space-y-3">
-                      <h5 className="text-center font-medium">Deep Voice</h5>
-                      <div className="p-4 rounded-lg border bg-card/30">
-                        <div className="flex gap-0 justify-center">
-                          {[['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']].map((pattern, letterIndex) => (
-                            <div key={letterIndex} className="flex flex-col gap-0">
-                              {pattern.map((color, i) => (
-                                <ColorSquare key={i} color={color} voice="deep" />
-                              ))}
-                            </div>
-                          ))}
-                        </div>
-                        <p className="text-xs text-center text-muted-foreground mt-2">Rich, resonant tones</p>
-                      </div>
-                    </div>
-
-                    {/* Normal Voice */}
-                    <div className="space-y-3">
-                      <h5 className="text-center font-medium">Normal Voice</h5>
-                      <div className="p-4 rounded-lg border bg-card/30">
-                        <div className="flex gap-0 justify-center">
-                          {[['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']].map((pattern, letterIndex) => (
-                            <div key={letterIndex} className="flex flex-col gap-0">
-                              {pattern.map((color, i) => (
-                                <ColorSquare key={i} color={color} voice="normal" />
-                              ))}
-                            </div>
-                          ))}
-                        </div>
-                        <p className="text-xs text-center text-muted-foreground mt-2">Clear, balanced tones</p>
                       </div>
                     </div>
                   </div>
 
                   
                   <div className="text-center text-sm text-muted-foreground space-y-2">
-                    <p>Each MAMA speaks with its own visual voice through saturation</p>
-                    <p>Whisper • Bold • Deep • Normal - four ways to express the same pattern</p>
+                    <p>Complete dimensional space: 16 unique MAMA expressions</p>
+                    <p>Each variation speaks with its own voice through saturation and color</p>
                   </div>
                   
                 </div>
