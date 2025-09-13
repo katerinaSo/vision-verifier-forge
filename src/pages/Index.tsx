@@ -12,6 +12,7 @@ const Index = () => {
   const letterEncodings = {
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
+    'M': { patterns: ['R-B-R'], meaning: 'discovery pattern' },
   };
 
   const encodeText = () => {
@@ -47,6 +48,24 @@ const Index = () => {
       <div className={`w-8 h-8 rounded-sm border ${colorMap[color as keyof typeof colorMap] || 'bg-muted'}`} />
     );
   };
+
+  const VerticalLetter = ({ letter, pattern, meaning }: { letter: string; pattern: string[]; meaning?: string }) => (
+    <div className="flex flex-col items-center space-y-1">
+      <Badge variant="outline" className="text-sm font-bold mb-2">
+        {letter}
+      </Badge>
+      <div className="flex flex-col gap-1">
+        {pattern.map((color, i) => (
+          <ColorSquare key={i} color={color} />
+        ))}
+      </div>
+      {meaning && (
+        <p className="text-xs text-muted-foreground text-center max-w-20 mt-2">
+          {meaning}
+        </p>
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background p-8">
@@ -85,23 +104,14 @@ const Index = () => {
               <CardTitle>Letter Dictionary</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="flex flex-wrap gap-6 justify-center">
                 {Object.entries(letterEncodings).map(([letter, data]) => (
-                  <div key={letter} className="border rounded-lg p-4">
-                    <div className="flex items-center gap-4 mb-2">
-                      <Badge variant="outline" className="text-lg font-bold">
-                        {letter}
-                      </Badge>
-                      <div className="flex gap-1">
-                        {data.patterns[0].split('-').map((color, i) => (
-                          <ColorSquare key={i} color={color} />
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground italic">
-                      {data.meaning}
-                    </p>
-                  </div>
+                  <VerticalLetter
+                    key={letter}
+                    letter={letter}
+                    pattern={data.patterns[0].split('-')}
+                    meaning={data.meaning}
+                  />
                 ))}
               </div>
             </CardContent>
@@ -112,26 +122,41 @@ const Index = () => {
         {encodedLetters.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle>Visual Encoding</CardTitle>
+              <CardTitle>Visual Encoding - Grid View</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-6">
+              <div className="flex flex-wrap gap-8 justify-center">
                 {encodedLetters.map((item, index) => (
-                  <div key={index} className="text-center space-y-2">
-                    <Badge variant="outline">{item.letter}</Badge>
-                    <div className="flex gap-1">
-                      {item.pattern.map((color, i) => (
-                        <ColorSquare key={i} color={color} />
-                      ))}
-                    </div>
-                    {item.meaning && (
-                      <p className="text-xs text-muted-foreground max-w-24">
-                        {item.meaning}
-                      </p>
-                    )}
-                  </div>
+                  <VerticalLetter
+                    key={index}
+                    letter={item.letter}
+                    pattern={item.pattern}
+                    meaning={item.meaning}
+                  />
                 ))}
               </div>
+              
+              {/* Special demonstration for OM */}
+              {inputText.toUpperCase().includes('OM') && (
+                <div className="mt-8 p-6 border-2 border-dashed border-primary/30 rounded-lg">
+                  <h4 className="text-center font-semibold mb-4">Word Grid: OM</h4>
+                  <div className="flex gap-8 justify-center">
+                    <VerticalLetter
+                      letter="O"
+                      pattern={['B', 'R', 'B']}
+                      meaning="ember under water"
+                    />
+                    <VerticalLetter
+                      letter="M"
+                      pattern={['R', 'B', 'R']}
+                      meaning="discovery pattern"
+                    />
+                  </div>
+                  <p className="text-center text-sm text-muted-foreground mt-4">
+                    Notice the harmonic relationship: O and M create a complementary pattern
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
         )}
