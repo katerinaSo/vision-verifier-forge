@@ -45,12 +45,13 @@ const Index = () => {
     setEncodedLetters(encoded);
   };
 
-  const ColorSquare = ({ color, voice = 'normal' }: { color: string; voice?: 'normal' | 'muted' | 'whisper' | 'bold' | 'deep' }) => {
+  const ColorSquare = ({ color, voice = 'normal' }: { color: string; voice?: 'normal' | 'muted' | 'whisper' | 'soft' | 'bold' | 'deep' }) => {
     const colorMap = {
       'R': {
         normal: 'bg-lang-red',
         muted: 'bg-[hsl(var(--lang-red-muted))]',
         whisper: 'bg-[hsl(var(--lang-red-whisper))]',
+        soft: 'bg-[hsl(var(--lang-red-soft))]',
         bold: 'bg-[hsl(var(--lang-red-bold))]',
         deep: 'bg-[hsl(var(--lang-red-deep))]'
       },
@@ -58,6 +59,7 @@ const Index = () => {
         normal: 'bg-lang-green',
         muted: 'bg-[hsl(var(--lang-green-muted))]', 
         whisper: 'bg-[hsl(var(--lang-green-whisper))]',
+        soft: 'bg-[hsl(var(--lang-green-soft))]',
         bold: 'bg-[hsl(var(--lang-green-bold))]',
         deep: 'bg-[hsl(var(--lang-green-deep))]'
       },
@@ -65,6 +67,7 @@ const Index = () => {
         normal: 'bg-lang-blue',
         muted: 'bg-[hsl(var(--lang-blue-muted))]',
         whisper: 'bg-[hsl(var(--lang-blue-whisper))]',
+        soft: 'bg-[hsl(var(--lang-blue-soft))]',
         bold: 'bg-[hsl(var(--lang-blue-bold))]',
         deep: 'bg-[hsl(var(--lang-blue-deep))]'
       },
@@ -72,6 +75,7 @@ const Index = () => {
         normal: 'bg-lang-yellow',
         muted: 'bg-[hsl(var(--lang-yellow-muted))]',
         whisper: 'bg-[hsl(var(--lang-yellow-whisper))]',
+        soft: 'bg-[hsl(var(--lang-yellow-soft))]',
         bold: 'bg-[hsl(var(--lang-yellow-bold))]',
         deep: 'bg-[hsl(var(--lang-yellow-deep))]'
       },
@@ -79,6 +83,7 @@ const Index = () => {
         normal: 'bg-muted',
         muted: 'bg-muted',
         whisper: 'bg-muted',
+        soft: 'bg-muted',
         bold: 'bg-muted',
         deep: 'bg-muted'
       }
@@ -236,26 +241,26 @@ const Index = () => {
                             <span className="text-xs text-muted-foreground mt-1">deep</span>
                           </div>
                           
-                          {/* A - Bold Voice (B-G-B) */}
+                          {/* A - Normal Voice (Y-R-Y) - Accent */}
                           <div className="flex flex-col items-center">
                             <Badge variant="outline" className="text-xs font-bold mb-1">A</Badge>
                             <div className="flex flex-col gap-0">
-                              {['B','G','B'].map((color, i) => (
-                                <ColorSquare key={i} color={color} voice="bold" />
+                              {['Y','R','Y'].map((color, i) => (
+                                <ColorSquare key={i} color={color} voice="normal" />
                               ))}
                             </div>
-                            <span className="text-xs text-muted-foreground mt-1">bold</span>
+                            <span className="text-xs text-muted-foreground mt-1">accent</span>
                           </div>
                           
-                          {/* M - Normal Voice (R-B-R) */}
+                          {/* M - Soft Voice (R-B-R) */}
                           <div className="flex flex-col items-center">
                             <Badge variant="outline" className="text-xs font-bold mb-1">M</Badge>
                             <div className="flex flex-col gap-0">
                               {['R','B','R'].map((color, i) => (
-                                <ColorSquare key={i} color={color} voice="normal" />
+                                <ColorSquare key={i} color={color} voice="soft" />
                               ))}
                             </div>
-                            <span className="text-xs text-muted-foreground mt-1">normal</span>
+                            <span className="text-xs text-muted-foreground mt-1">soft</span>
                           </div>
                           
                           {/* A - Whisper Voice (G-Y-G) */}
@@ -272,7 +277,7 @@ const Index = () => {
                         
                         <div className="mt-4 text-center">
                           <p className="text-xs text-muted-foreground">
-                            Like a child speaking: Deep call → Bold recognition → Stable center → Tender whisper
+                            Harmonious flow: Deep call → Bright accent → Gentle settling → Tender whisper
                           </p>
                         </div>
                       </div>
