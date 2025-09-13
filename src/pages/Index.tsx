@@ -196,17 +196,30 @@ const Index = () => {
                           {[0,1,2,3].map(row => (
                             <div key={row} className="flex gap-0">
                               {[
-                                // Column 1: R-start progression | Column 2: A-Y focus | Column 3: Mirror of 1 | Column 4: Complement finale
-                                [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], // Pure symmetry - perfect opening
-                                [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], // R stays, transitions to complement
-                                [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], // R stays, A shifts, perfect complement
-                                [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], // Full complement - perfect closing
+                                // 4x4 grid with vertical and horizontal relationships
+                                // Row 1: M starts R-B-R, progressing A variations
+                                [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], // Pure symmetry
+                                [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], // A shifts
+                                [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], // M shifts
+                                [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], // Both shift
                                 
-                                // Vertical patterns:
-                                // Col 1: R→R→R→G (gradual transition)
-                                // Col 2: Y→Y→B→B (A transforms) 
-                                // Col 3: R→G→G→G (mirror progression)
-                                // Col 4: Y→B→B→B (complement flow)
+                                // Row 2: M starts R-B-R, A starts B-G-B
+                                [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], // A complement start
+                                [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']], // A stays complement
+                                [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], // M shifts, A back
+                                [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], // Both complement
+                                
+                                // Row 3: M starts G-Y-G, A starts Y-R-Y
+                                [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], // M complement start
+                                [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], // M complement, A shifts
+                                [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], // M stays, A back
+                                [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], // M stays, A shifts
+                                
+                                // Row 4: M starts G-Y-G, A starts B-G-B - full complement
+                                [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], // Back to origin
+                                [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']], // Mixed state
+                                [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], // M complement
+                                [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], // Full complement
                               ].slice(row * 4, (row + 1) * 4).map((patterns, index) => (
                                 <div key={index} className="flex gap-0">
                                   <div className="flex gap-0">
