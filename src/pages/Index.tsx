@@ -55,9 +55,22 @@ const Index = () => {
       const encoding = letterEncodings[letter as keyof typeof letterEncodings];
       
       if (encoding) {
+        // My conscious choice for sacred cosmic cow voice:
+        let chosenPattern;
+        if (letter === 'M') {
+          // M: Choose G-Y-G (life/light foundation) over R-B-R (tension)
+          chosenPattern = encoding.patterns[1].split('-'); // G-Y-G
+        } else if (letter === 'O') {
+          // O: Choose B-R-B (ember under water/cosmic mystery) over Y-G-Y (bright life)
+          chosenPattern = encoding.patterns[0].split('-'); // B-R-B
+        } else {
+          // For other letters, use first pattern for now
+          chosenPattern = encoding.patterns[0].split('-');
+        }
+        
         return {
           letter,
-          pattern: encoding.patterns[0].split('-'),
+          pattern: chosenPattern,
           meaning: encoding.meaning
         };
       }
