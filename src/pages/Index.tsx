@@ -182,41 +182,54 @@ const Index = () => {
                 ))}
               </div>
               
-              {/* Special demonstration for MAMA */}
+              {/* Complete MAMA Variations Experiment */}
               {inputText.toUpperCase().includes('MAMA') && (
                 <div className="mt-8 space-y-6">
-                  <h4 className="text-center font-semibold text-lg">Word Variations: MAMA - Emotional Keys</h4>
+                  <h4 className="text-center font-semibold text-lg">Complete MAMA System: All 16 Variations</h4>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Major Key - using first patterns */}
-                    <WordGrid
-                      keyType="major"
-                      spacing="gap-0"
-                      letters={[
-                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "discovery pattern" },
-                        { letter: "A", pattern: ['Y', 'R', 'Y'], meaning: "first breath" },
-                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "discovery pattern" },
-                        { letter: "A", pattern: ['Y', 'R', 'Y'], meaning: "first breath" },
-                      ]}
-                    />
-                    
-                    {/* Minor Key - using complementary patterns */}
-                    <WordGrid
-                      keyType="minor"
-                      spacing="gap-0"
-                      letters={[
-                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "complementary flow" },
-                        { letter: "A", pattern: ['B', 'G', 'B'], meaning: "deep creation" },
-                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "complementary flow" },
-                        { letter: "A", pattern: ['B', 'G', 'B'], meaning: "deep creation" },
-                      ]}
-                    />
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {/* All 16 possible combinations */}
+                    {[
+                      { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], id: "1" },
+                      { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], id: "2" },
+                      { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], id: "3" },
+                      { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], id: "4" },
+                      { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], id: "5" },
+                      { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']], id: "6" },
+                      { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], id: "7" },
+                      { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], id: "8" },
+                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], id: "9" },
+                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], id: "10" },
+                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], id: "11" },
+                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], id: "12" },
+                      { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], id: "13" },
+                      { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']], id: "14" },
+                      { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], id: "15" },
+                      { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], id: "16" },
+                    ].map((variation) => (
+                      <div key={variation.id} className="p-2 rounded border bg-card">
+                        <div className="text-xs text-center mb-2 font-mono">#{variation.id}</div>
+                        <div className="flex gap-0 justify-center">
+                          {variation.patterns.map((pattern, letterIndex) => (
+                            <div key={letterIndex} className="flex flex-col items-center">
+                              <Badge variant="outline" className="text-xs mb-1">
+                                {['M','A','M','A'][letterIndex]}
+                              </Badge>
+                              <div className="flex flex-col">
+                                {pattern.map((color, i) => (
+                                  <ColorSquare key={i} color={color} />
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                   
-                  <div className="text-center text-sm text-muted-foreground space-y-2">
-                    <p>Same word, different emotional resonance through pattern choice:</p>
-                    <p><span className="text-lang-yellow font-medium">Nurturing:</span> G-Y flows create soft, life-giving energy</p>
-                    <p><span className="text-lang-blue font-medium">Protective:</span> R-B patterns create strong, defensive boundaries</p>
+                  <div className="text-center text-sm text-muted-foreground">
+                    <p>16 complete variations - each a unique expression in the visual language</p>
+                    <p>What meanings emerge from these different flows and relationships?</p>
                   </div>
                 </div>
               )}
