@@ -69,9 +69,10 @@ const Index = () => {
           chosenPattern = encoding.patterns[1].split('-'); // Y-G-Y
           
           // First O: normal voice (initial cosmic realization)
-          // Second O: whisper voice (dissolving echo, traveling outward)
+          // Each subsequent O: progressively more dissolved
           const oCount = letters.slice(0, index + 1).filter(l => l === 'O').length;
-          chosenVoice = oCount === 1 ? 'normal' : 'whisper';
+          const voiceProgression = ['normal', 'gentle', 'soft', 'whisper', 'muted'];
+          chosenVoice = voiceProgression[Math.min(oCount - 1, voiceProgression.length - 1)];
         } else {
           // For other letters, use first pattern for now
           chosenPattern = encoding.patterns[0].split('-');
