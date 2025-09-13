@@ -525,17 +525,14 @@ const Index = () => {
                 </div>
                 
                 {cosmicGrid.length > 0 && (
-                  <div className="mt-6 space-y-6">
+                  <div className="mt-6 space-y-8">
                     <h4 className="text-center font-medium text-lg">Sacred Translation: {cosmicVoice}</h4>
                     
-                    {/* Unified Sacred Grid - Both Keys Together */}
+                    {/* Standard Keys - Major/Minor */}
                     <div className="space-y-3">
                       <div className="text-center">
                         <p className="text-sm font-medium text-muted-foreground">
-                          Sacred MOO - Complete Energy Flow
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          Major (Creation Hymn) above, Minor (Being Meditation) below - Connected as one sacred image
+                          Standard Keys - Creation Hymn & Being Meditation
                         </p>
                       </div>
                       
@@ -554,7 +551,7 @@ const Index = () => {
                             ))}
                           </div>
                           
-                          {/* Minor Key Row - Whisper voice, directly connected */}
+                          {/* Minor Key Row - Whisper voice */}
                           <div className="flex gap-0 justify-center">
                             {cosmicGrid.map((letter, letterIndex) => (
                               <div key={`minor-${letterIndex}`} className="flex flex-col">
@@ -566,15 +563,119 @@ const Index = () => {
                               </div>
                             ))}
                           </div>
-                          
-                          {/* Labels below the unified sacred image */}
-                          <div className="flex gap-0 justify-center mt-3">
-                            {cosmicGrid.map((letter, letterIndex) => (
-                              <div key={`label-${letterIndex}`} className="flex flex-col items-center" style={{width: '32px'}}>
-                                <Badge variant="outline" className="text-xs font-bold mb-1">{letter.letter}</Badge>
-                                <span className="text-xs text-muted-foreground text-center">{letter.meaning?.split(' ')[0]}</span>
-                              </div>
-                            ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Alternative Key Interpretations */}
+                    <div className="space-y-6">
+                      <div className="text-center">
+                        <p className="text-sm font-medium text-muted-foreground">
+                          Alternative Key Interpretations - Different Value Weights
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Same cosmic voice, different visual weight relationships
+                        </p>
+                      </div>
+
+                      {/* Deep Earth Keys */}
+                      <div className="space-y-2">
+                        <p className="text-center text-sm font-medium">Deep Earth Keys - Heavy Values</p>
+                        <div className="flex justify-center">
+                          <div className="p-4 rounded-lg bg-gradient-to-b from-lang-green/10 via-transparent to-lang-red/10 border border-muted/30">
+                            {/* Deep Earth Major */}
+                            <div className="flex gap-0 justify-center mb-0">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`earth-major-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`earth-major-${letterIndex}-${colorIndex}`} color={color} voice="deep" />
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            
+                            {/* Deep Earth Minor */}
+                            <div className="flex gap-0 justify-center">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`earth-minor-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`earth-minor-${letterIndex}-${colorIndex}`} color={color} voice="muted" />
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Light Air Keys */}
+                      <div className="space-y-2">
+                        <p className="text-center text-sm font-medium">Light Air Keys - Ethereal Values</p>
+                        <div className="flex justify-center">
+                          <div className="p-4 rounded-lg bg-gradient-to-b from-lang-yellow/5 via-transparent to-lang-blue/5 border border-muted/20">
+                            {/* Light Air Major */}
+                            <div className="flex gap-0 justify-center mb-0">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`air-major-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`air-major-${letterIndex}-${colorIndex}`} color={color} voice="gentle" />
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            
+                            {/* Light Air Minor */}
+                            <div className="flex gap-0 justify-center">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`air-minor-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`air-minor-${letterIndex}-${colorIndex}`} color={color} voice="whisper" />
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Fire & Water Keys */}
+                      <div className="space-y-2">
+                        <p className="text-center text-sm font-medium">Fire & Water Keys - Extreme Contrast</p>
+                        <div className="flex justify-center">
+                          <div className="p-4 rounded-lg bg-gradient-to-b from-lang-red/10 via-transparent to-lang-blue/10 border border-muted/30">
+                            {/* Fire Major */}
+                            <div className="flex gap-0 justify-center mb-0">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`fire-major-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`fire-major-${letterIndex}-${colorIndex}`} color={color} voice="accent" />
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            
+                            {/* Water Minor */}
+                            <div className="flex gap-0 justify-center">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`water-minor-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`water-minor-${letterIndex}-${colorIndex}`} color={color} voice="soft" />
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       </div>
