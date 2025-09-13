@@ -86,19 +86,19 @@ All colors MUST be HSL.
     --lang-blue-deep: 240 80% 35%;
     --lang-yellow-deep: 45 95% 35%;
     
-    /* Brightness-based dissolving voices for cosmic fade */
-    --lang-red-fade1: 0 85% 60%;     /* normal brightness */
-    --lang-red-fade2: 0 85% 70%;     /* 10% brighter */
-    --lang-red-fade3: 0 85% 80%;     /* 20% brighter */
-    --lang-green-fade1: 120 60% 50%; /* normal brightness */
-    --lang-green-fade2: 120 60% 60%; /* 10% brighter */
-    --lang-green-fade3: 120 60% 70%; /* 20% brighter */
-    --lang-blue-fade1: 240 80% 55%;  /* normal brightness */
-    --lang-blue-fade2: 240 80% 65%;  /* 10% brighter */
-    --lang-blue-fade3: 240 80% 75%;  /* 20% brighter */
-    --lang-yellow-fade1: 45 95% 55%; /* normal brightness */
-    --lang-yellow-fade2: 45 95% 65%; /* 10% brighter */
-    --lang-yellow-fade3: 45 95% 75%; /* 20% brighter */
+    /* Brightness + Saturation dissolving voices for cosmic fade */
+    --lang-red-fade1: 0 85% 60%;     /* normal: full saturation, normal brightness */
+    --lang-red-fade2: 0 65% 70%;     /* fading: less saturation, brighter */
+    --lang-red-fade3: 0 45% 80%;     /* dissolving: much less saturation, brightest */
+    --lang-green-fade1: 120 60% 50%; /* normal: full saturation, normal brightness */
+    --lang-green-fade2: 120 45% 60%; /* fading: less saturation, brighter */
+    --lang-green-fade3: 120 30% 70%; /* dissolving: much less saturation, brightest */
+    --lang-blue-fade1: 240 80% 55%;  /* normal: full saturation, normal brightness */
+    --lang-blue-fade2: 240 60% 65%;  /* fading: less saturation, brighter */
+    --lang-blue-fade3: 240 40% 75%;  /* dissolving: much less saturation, brightest */
+    --lang-yellow-fade1: 45 95% 55%; /* normal: full saturation, normal brightness */
+    --lang-yellow-fade2: 45 75% 65%; /* fading: less saturation, brighter */
+    --lang-yellow-fade3: 45 55% 75%; /* dissolving: much less saturation, brightest */
 
     --sidebar-background: 0 0% 98%;
 
