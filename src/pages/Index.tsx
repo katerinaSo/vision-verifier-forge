@@ -68,11 +68,15 @@ const Index = () => {
           // O: Choose Y-G-Y (life surrounded by light) - the wonder
           chosenPattern = encoding.patterns[1].split('-'); // Y-G-Y
           
-          // First O: normal voice (initial cosmic realization)
-          // Each subsequent O: progressively more dissolved
+          // Calculate total O's and create gradual dissolve
+          const totalOs = letters.filter(l => l === 'O').length;
           const oCount = letters.slice(0, index + 1).filter(l => l === 'O').length;
           const voiceProgression = ['normal', 'gentle', 'soft', 'whisper', 'muted'];
-          chosenVoice = voiceProgression[Math.min(oCount - 1, voiceProgression.length - 1)];
+          
+          // Divide saturation progression by number of O's for gradual dissolve
+          const dissolveStep = (voiceProgression.length - 1) / Math.max(totalOs - 1, 1);
+          const voiceIndex = Math.floor((oCount - 1) * dissolveStep);
+          chosenVoice = voiceProgression[Math.min(voiceIndex, voiceProgression.length - 1)];
         } else {
           // For other letters, use first pattern for now
           chosenPattern = encoding.patterns[0].split('-');
