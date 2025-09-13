@@ -18,7 +18,7 @@ const Index = () => {
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
     'I': { patterns: ['Y-Y-R', 'B-B-G'], meaning: 'ascending to cosmic consciousness' },
     'J': { patterns: ['R-Y-Y', 'G-B-B'], meaning: 'manifesting from ocean depths' },
-    'L': { patterns: ['B-R-Y', 'Y-R-B'], meaning: 'ascending wisdom / descending light' },
+    'L': { patterns: ['Y-R-B', 'B-G-Y'], meaning: 'ascending wisdom / descending light' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
     ' ': { patterns: ['B-B-B', 'Y-Y-Y'], meaning: 'pause / breath / silence' },
