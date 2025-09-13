@@ -211,13 +211,25 @@ const Index = () => {
                             [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
                           ].slice(row * 4, (row + 1) * 4).map((patterns, index) => (
                             <div key={index} className="flex gap-0">
-                              {patterns.map((pattern, letterIndex) => (
-                                <div key={letterIndex} className="flex flex-col">
-                                  {pattern.map((color, i) => (
+                              {/* MAMA word */}
+                              <div className="flex gap-0">
+                                {patterns.map((pattern, letterIndex) => (
+                                  <div key={letterIndex} className="flex flex-col">
+                                    {pattern.map((color, i) => (
+                                      <ColorSquare key={i} color={color} />
+                                    ))}
+                                  </div>
+                                ))}
+                              </div>
+                              
+                              {/* Word space (except for last in row) */}
+                              {index < 3 && (
+                                <div className="flex flex-col mx-1">
+                                  {(index % 2 === 0 ? ['B','B','B'] : ['Y','Y','Y']).map((color, i) => (
                                     <ColorSquare key={i} color={color} />
                                   ))}
                                 </div>
-                              ))}
+                              )}
                             </div>
                           ))}
                         </div>
