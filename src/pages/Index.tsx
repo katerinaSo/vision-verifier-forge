@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import visualLanguageAbstract from "@/assets/visual-language-abstract.jpg";
+import mamaGridDirect from "@/assets/mama-grid-direct.jpg";
 
 const Index = () => {
   const [inputText, setInputText] = useState("");
@@ -301,6 +302,21 @@ const Index = () => {
                   <div className="text-center text-sm text-muted-foreground">
                     <p>One unified composition: All possible MAMAs flowing through visual space</p>
                     <p>BBB and YYY monoliths create rhythm between variations</p>
+                  </div>
+                  
+                  {/* Generated Direct Grid Translation */}
+                  <div className="mt-8 space-y-4">
+                    <h5 className="text-center font-semibold text-lg">Direct Grid Translation</h5>
+                    <div className="rounded-lg overflow-hidden border">
+                      <img 
+                        src={mamaGridDirect} 
+                        alt="Direct translation of the 4x4 MAMA grid showing exact color pattern arrangements"
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    <p className="text-center text-sm text-muted-foreground">
+                      AI interpretation of your exact 4x4 MAMA grid arrangement
+                    </p>
                   </div>
                   
                   {/* Generated Abstract Art */}
