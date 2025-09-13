@@ -19,7 +19,7 @@ const Index = () => {
     'C': { patterns: ['R-G-R', 'G-R-G'], meaning: 'curved embrace / circular flow' },
     'D': { patterns: ['Y-B-Y', 'B-Y-B'], meaning: 'dynamic depth / dimensional gateway' },
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
-    'F': { patterns: ['Y-Y-Y', 'B-B-B'], meaning: 'flowing light / flowing depth' },
+    'F': { patterns: ['G-R-Y', 'R-G-B'], meaning: 'flowing force / dynamic fusion' },
     'G': { patterns: ['R-R-G', 'G-G-R'], meaning: 'growing force / ascending power' },
     'H': { patterns: ['B-B-Y', 'Y-Y-B'], meaning: 'heightened awareness / bridging realms' },
     'I': { patterns: ['Y-Y-R', 'B-B-G'], meaning: 'ascending to cosmic consciousness' },
