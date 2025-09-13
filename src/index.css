@@ -44,11 +44,29 @@ All colors MUST be HSL.
     --lang-blue: 240 80% 55%;
     --lang-yellow: 45 95% 55%;
     
-    /* Monolith variations - reduced saturation */
+    /* Voice saturation variations */
     --lang-red-muted: 0 25% 60%;
     --lang-green-muted: 120 20% 50%;
     --lang-blue-muted: 240 25% 55%;
     --lang-yellow-muted: 45 30% 55%;
+    
+    /* Voice variations - whisper (very low saturation) */
+    --lang-red-whisper: 0 15% 65%;
+    --lang-green-whisper: 120 15% 55%;
+    --lang-blue-whisper: 240 15% 60%;
+    --lang-yellow-whisper: 45 20% 60%;
+    
+    /* Voice variations - bold (high saturation) */
+    --lang-red-bold: 0 95% 55%;
+    --lang-green-bold: 120 85% 45%;
+    --lang-blue-bold: 240 100% 50%;
+    --lang-yellow-bold: 45 100% 50%;
+    
+    /* Voice variations - deep (darker tone) */
+    --lang-red-deep: 0 85% 40%;
+    --lang-green-deep: 120 60% 30%;
+    --lang-blue-deep: 240 80% 35%;
+    --lang-yellow-deep: 45 95% 35%;
 
     --sidebar-background: 0 0% 98%;
 
