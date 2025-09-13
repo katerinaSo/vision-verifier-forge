@@ -187,11 +187,11 @@ const Index = () => {
                 <div className="mt-8 space-y-6">
                   <h4 className="text-center font-semibold text-lg">MAMA: Complete Dimensional Space</h4>
                   
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* BBB Space Grid */}
+                  <div className="space-y-8">
+                    {/* BBB Space Composition */}
                     <div className="space-y-3">
-                      <h5 className="text-center font-medium">BBB Space Key</h5>
-                      <div className="p-4 rounded-lg border bg-card/50">
+                      <h5 className="text-center font-semibold text-lg">MAMA - BBB Space Key</h5>
+                      <div className="p-6 rounded-lg border bg-card/50">
                         <div className="flex flex-col gap-2 items-center">
                           {[0,1,2,3].map(row => (
                             <div key={row} className="flex gap-0">
@@ -238,10 +238,10 @@ const Index = () => {
                       </div>
                     </div>
 
-                    {/* YYY Space Grid */}
+                    {/* YYY Space Composition */}
                     <div className="space-y-3">
-                      <h5 className="text-center font-medium">YYY Space Key</h5>
-                      <div className="p-4 rounded-lg border bg-card/50">
+                      <h5 className="text-center font-semibold text-lg">MAMA - YYY Space Key</h5>
+                      <div className="p-6 rounded-lg border bg-card/50">
                         <div className="flex flex-col gap-2 items-center">
                           {[0,1,2,3].map(row => (
                             <div key={row} className="flex gap-0">
