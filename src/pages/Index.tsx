@@ -21,6 +21,7 @@ const Index = () => {
     'L': { patterns: ['Y-R-B', 'B-G-Y'], meaning: 'ascending wisdom / descending light' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
+    'V': { patterns: ['B-Y-B', 'Y-B-Y'], meaning: 'protective vessel / embracing container' },
     ' ': { patterns: ['B-B-B', 'Y-Y-Y'], meaning: 'pause / breath / silence' },
   };
 
