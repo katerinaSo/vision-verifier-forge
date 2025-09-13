@@ -16,7 +16,7 @@ const Index = () => {
   const letterEncodings = {
     'A': { patterns: ['Y-R-Y', 'B-G-B'], meaning: 'the first breath of creation' },
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
-    'I': { patterns: ['Y-B-Y', 'R-G-R'], meaning: 'vertical self / consciousness pillar' },
+    'I': { patterns: ['R-Y-Y', 'G-B-B'], meaning: 'ascending self / descending consciousness' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
   };
