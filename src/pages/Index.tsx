@@ -323,20 +323,15 @@ const Index = () => {
         {encodedLetters.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle>Encoded Text</CardTitle>
+              <CardTitle>Color Painting</CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
               <div className="flex gap-0 justify-center mb-6">
                 {encodedLetters.map((letter, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <Badge variant="outline" className="text-sm font-bold mb-1">
-                      {letter.letter}
-                    </Badge>
-                    <div className="flex flex-col">
-                      {letter.pattern.map((color, i) => (
-                        <ColorSquare key={i} color={color} />
-                      ))}
-                    </div>
+                  <div key={index} className="flex flex-col">
+                    {letter.pattern.map((color, i) => (
+                      <ColorSquare key={i} color={color} />
+                    ))}
                   </div>
                 ))}
               </div>
