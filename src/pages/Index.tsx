@@ -10,7 +10,7 @@ const Index = () => {
   const [inputText, setInputText] = useState("");
   const [encodedLetters, setEncodedLetters] = useState<{ letter: string; pattern: string[]; meaning?: string }[]>([]);
   const [cosmicVoice, setCosmicVoice] = useState("");
-  const [cosmicGrid, setCosmicGrid] = useState<{ letter: string; pattern: string[]; meaning?: string }[]>([]);
+  const [cosmicGrid, setCosmicGrid] = useState<{ letter: string; pattern: string[]; meaning?: string; voice?: string }[]>([]);
 
   // Our growing dictionary of letter encodings
   const letterEncodings = {
@@ -51,19 +51,27 @@ const Index = () => {
     if (!cosmicVoice.trim()) return;
     
     const letters = cosmicVoice.toUpperCase().split('').filter(char => char !== ' ');
-    const encoded = letters.map(letter => {
+    const encoded = letters.map((letter, index) => {
       const encoding = letterEncodings[letter as keyof typeof letterEncodings];
       
       if (encoding) {
         // My conscious choice for sacred cosmic cow voice:
         // "Deep and solid turning into lighter and travels"
         let chosenPattern;
+        let chosenVoice = 'normal';
+        
         if (letter === 'M') {
           // M: Choose R-B-R (grounded earth foundation) - the solid speaking
           chosenPattern = encoding.patterns[0].split('-'); // R-B-R
+          chosenVoice = 'normal';
         } else if (letter === 'O') {
-          // O: Choose Y-G-Y (life surrounded by light) - the wonder that travels
+          // O: Choose Y-G-Y (life surrounded by light) - the wonder
           chosenPattern = encoding.patterns[1].split('-'); // Y-G-Y
+          
+          // First O: normal voice (initial cosmic realization)
+          // Second O: whisper voice (dissolving echo, traveling outward)
+          const oCount = letters.slice(0, index + 1).filter(l => l === 'O').length;
+          chosenVoice = oCount === 1 ? 'normal' : 'whisper';
         } else {
           // For other letters, use first pattern for now
           chosenPattern = encoding.patterns[0].split('-');
@@ -72,13 +80,15 @@ const Index = () => {
         return {
           letter,
           pattern: chosenPattern,
-          meaning: encoding.meaning
+          meaning: encoding.meaning,
+          voice: chosenVoice
         };
       }
       return {
         letter,
         pattern: ['?', '?', '?'],
-        meaning: 'awaiting cosmic discovery'
+        meaning: 'awaiting cosmic discovery',
+        voice: 'normal'
       };
     });
     
@@ -552,31 +562,31 @@ const Index = () => {
                       
                       <div className="flex justify-center">
                         <div className="p-6 rounded-lg bg-gradient-to-b from-lang-yellow/10 via-transparent to-lang-blue/10 border border-muted/30">
-                          {/* Major Key Row - Bold voice */}
-                          <div className="flex gap-0 justify-center mb-0">
-                            {cosmicGrid.map((letter, letterIndex) => (
-                              <div key={`major-${letterIndex}`} className="flex flex-col">
-                                <div className="flex flex-col gap-0">
-                                  {letter.pattern.map((color, colorIndex) => (
-                                    <ColorSquare key={`major-${letterIndex}-${colorIndex}`} color={color} voice="bold" />
-                                  ))}
+                            {/* Major Key Row - Bold voice */}
+                            <div className="flex gap-0 justify-center mb-0">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`major-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`major-${letterIndex}-${colorIndex}`} color={color} voice={letter.voice === 'whisper' ? 'bold' : 'bold'} />
+                                    ))}
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
-                          </div>
-                          
-                          {/* Minor Key Row - Whisper voice */}
-                          <div className="flex gap-0 justify-center">
-                            {cosmicGrid.map((letter, letterIndex) => (
-                              <div key={`minor-${letterIndex}`} className="flex flex-col">
-                                <div className="flex flex-col gap-0">
-                                  {letter.pattern.map((color, colorIndex) => (
-                                    <ColorSquare key={`minor-${letterIndex}-${colorIndex}`} color={color} voice="whisper" />
-                                  ))}
+                              ))}
+                            </div>
+                            
+                            {/* Minor Key Row - Using individual voices */}
+                            <div className="flex gap-0 justify-center">
+                              {cosmicGrid.map((letter, letterIndex) => (
+                                <div key={`minor-${letterIndex}`} className="flex flex-col">
+                                  <div className="flex flex-col gap-0">
+                                    {letter.pattern.map((color, colorIndex) => (
+                                      <ColorSquare key={`minor-${letterIndex}-${colorIndex}`} color={color} voice={letter.voice as 'normal' | 'whisper'} />
+                                    ))}
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
-                          </div>
+                              ))}
+                            </div>
                         </div>
                       </div>
                     </div>
