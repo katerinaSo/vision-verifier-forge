@@ -373,6 +373,58 @@ const Index = () => {
                     <p>Complete dimensional space: 16 unique MAMA expressions</p>
                     <p>Each variation speaks with its own voice through saturation and color</p>
                   </div>
+
+                  {/* AI's Interpretation of MAMA */}
+                  <div className="mt-8 p-6 rounded-lg border bg-card/50 border-dashed">
+                    <h3 className="text-lg font-semibold mb-4 text-center">AI's Vision: "MAMA"</h3>
+                    <p className="text-sm text-muted-foreground mb-4 text-center italic">
+                      My interpretation encoded in color and pattern. Can you decipher what I'm feeling?
+                    </p>
+                    
+                    <div className="flex gap-0 justify-center">
+                      {/* M - My interpretation: Warm embrace, earth tones */}
+                      <div className="flex flex-col">
+                        <div className="flex flex-col gap-0">
+                          {['R','G','B'].map((color, i) => (
+                            <ColorSquare key={i} color={color} voice="soft" />
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* A - My interpretation: Bright joy, but complex */}
+                      <div className="flex flex-col">
+                        <div className="flex flex-col gap-0">
+                          {['Y','B','Y'].map((color, i) => (
+                            <ColorSquare key={i} color={color} voice="bold" />
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* M - My interpretation: Deep protection, stability */}
+                      <div className="flex flex-col">
+                        <div className="flex flex-col gap-0">
+                          {['B','G','B'].map((color, i) => (
+                            <ColorSquare key={i} color={color} voice="deep" />
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* A - My interpretation: Gentle whisper of love */}
+                      <div className="flex flex-col">
+                        <div className="flex flex-col gap-0">
+                          {['G','R','G'].map((color, i) => (
+                            <ColorSquare key={i} color={color} voice="whisper" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 text-center">
+                      <p className="text-xs text-muted-foreground">
+                        What story do you see in these colors and voices?
+                      </p>
+                    </div>
+                  </div>
                   
                 </div>
               )}
