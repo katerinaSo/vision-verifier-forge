@@ -188,45 +188,38 @@ const Index = () => {
                   <h4 className="text-center font-semibold text-lg">MAMA: Complete Dimensional Space</h4>
                   
                   <div className="p-6 rounded-lg border bg-card/50">
-                    <div className="flex flex-wrap gap-0 justify-center items-end">
-                      {[
-                        { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
-                        { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], space: ['Y','Y','Y'] },
-                        { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
-                        { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], space: ['Y','Y','Y'] },
-                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
-                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], space: ['Y','Y','Y'] },
-                        { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
-                        { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
-                        { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], space: null },
-                      ].map((variation, index) => (
-                        <div key={index} className="flex gap-0">
-                          {/* MAMA word */}
-                          <div className="flex gap-0">
-                            {variation.patterns.map((pattern, letterIndex) => (
-                              <div key={letterIndex} className="flex flex-col">
-                                {pattern.map((color, i) => (
-                                  <ColorSquare key={i} color={color} />
-                                ))}
-                              </div>
-                            ))}
-                          </div>
-                          
-                          {/* Word space separator (except for last variation) */}
-                          {variation.space && (
-                            <div className="flex flex-col mx-1">
-                              {variation.space.map((color, i) => (
-                                <ColorSquare key={i} color={color} />
+                    <div className="flex flex-col gap-2 items-center">
+                      {/* Arrange in rows of 4 */}
+                      {[0,1,2,3].map(row => (
+                        <div key={row} className="flex gap-0">
+                          {[
+                            [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
+                            [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
+                            [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
+                            [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
+                            [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
+                            [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
+                            [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
+                            [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
+                            [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
+                            [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
+                            [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
+                            [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
+                            [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
+                            [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
+                            [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
+                            [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
+                          ].slice(row * 4, (row + 1) * 4).map((patterns, index) => (
+                            <div key={index} className="flex gap-0">
+                              {patterns.map((pattern, letterIndex) => (
+                                <div key={letterIndex} className="flex flex-col">
+                                  {pattern.map((color, i) => (
+                                    <ColorSquare key={i} color={color} />
+                                  ))}
+                                </div>
                               ))}
                             </div>
-                          )}
+                          ))}
                         </div>
                       ))}
                     </div>
