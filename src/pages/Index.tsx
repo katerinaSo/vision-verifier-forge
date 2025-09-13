@@ -304,35 +304,6 @@ const Index = () => {
                     <p>BBB and YYY monoliths create rhythm between variations</p>
                   </div>
                   
-                  {/* Generated Direct Grid Translation */}
-                  <div className="mt-8 space-y-4">
-                    <h5 className="text-center font-semibold text-lg">Direct Grid Translation</h5>
-                    <div className="rounded-lg overflow-hidden border">
-                      <img 
-                        src={mamaGridDirect} 
-                        alt="Direct translation of the 4x4 MAMA grid showing exact color pattern arrangements"
-                        className="w-full h-auto"
-                      />
-                    </div>
-                    <p className="text-center text-sm text-muted-foreground">
-                      AI interpretation of your exact 4x4 MAMA grid arrangement
-                    </p>
-                  </div>
-                  
-                  {/* Generated Abstract Art */}
-                  <div className="mt-8 space-y-4">
-                    <h5 className="text-center font-semibold text-lg">Abstract Interpretation</h5>
-                    <div className="rounded-lg overflow-hidden border">
-                      <img 
-                        src={visualLanguageAbstract} 
-                        alt="Abstract painting inspired by the visual language system - flowing color blocks representing MAMA variations with harmonic relationships"
-                        className="w-full h-auto"
-                      />
-                    </div>
-                    <p className="text-center text-sm text-muted-foreground">
-                      AI-generated abstract painting interpreting your visual language system
-                    </p>
-                  </div>
                 </div>
               )}
 
