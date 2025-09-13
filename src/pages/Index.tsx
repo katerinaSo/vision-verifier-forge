@@ -45,10 +45,10 @@ const Index = () => {
 
   const ColorSquare = ({ color, muted = false }: { color: string; muted?: boolean }) => {
     const colorMap = {
-      'R': muted ? 'bg-[hsl(var(--lang-red-light))]' : 'bg-lang-red',
-      'G': muted ? 'bg-[hsl(var(--lang-green-light))]' : 'bg-lang-green', 
-      'B': muted ? 'bg-[hsl(var(--lang-blue-light))]' : 'bg-lang-blue',
-      'Y': muted ? 'bg-[hsl(var(--lang-yellow-light))]' : 'bg-lang-yellow',
+      'R': muted ? 'bg-[hsl(var(--lang-red-muted))]' : 'bg-lang-red',
+      'G': muted ? 'bg-[hsl(var(--lang-green-muted))]' : 'bg-lang-green', 
+      'B': muted ? 'bg-[hsl(var(--lang-blue-muted))]' : 'bg-lang-blue',
+      'Y': muted ? 'bg-[hsl(var(--lang-yellow-muted))]' : 'bg-lang-yellow',
       '?': 'bg-muted'
     };
     
