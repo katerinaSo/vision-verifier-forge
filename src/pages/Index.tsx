@@ -48,14 +48,35 @@ const Index = () => {
     const letters = inputText.toUpperCase().split('');
     console.log("Letters to encode:", letters);
     
+    // Analyze emotional context of the phrase
+    const text = inputText.toLowerCase();
+    const softWords = ['whisper', 'weave', 'gentle', 'soft', 'tender', 'quiet', 'love', 'peace', 'calm', 'flow'];
+    const boldWords = ['one', 'power', 'strong', 'bold', 'loud', 'force', 'energy', 'fire', 'passion', 'declare'];
+    
+    const isSoft = softWords.some(word => text.includes(word));
+    const isBold = boldWords.some(word => text.includes(word));
+    
     const encoded = letters.map(letter => {
       const encoding = letterEncodings[letter as keyof typeof letterEncodings];
       console.log(`Encoding for ${letter}:`, encoding);
       
       if (encoding) {
+        // Choose pattern based on context
+        let patternIndex = 0;
+        if (letter === 'E') {
+          patternIndex = isSoft ? 1 : 0; // G-G-G for soft, R-R-R for bold
+        } else if (letter === 'A') {
+          patternIndex = isSoft ? 1 : 0; // B-G-B for soft, Y-R-Y for bold
+        } else if (letter === 'O') {
+          patternIndex = isSoft ? 0 : 1; // B-R-B for soft, Y-G-Y for bold
+        } else {
+          // For other letters, choose based on overall tone
+          patternIndex = isSoft ? 1 : 0;
+        }
+        
         return {
           letter,
-          pattern: encoding.patterns[0].split('-'),
+          pattern: encoding.patterns[patternIndex].split('-'),
           meaning: encoding.meaning
         };
       }
