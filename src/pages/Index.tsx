@@ -12,15 +12,23 @@ const Index = () => {
   const [cosmicVoice, setCosmicVoice] = useState("");
   const [cosmicGrid, setCosmicGrid] = useState<{ letter: string; pattern: string[]; meaning?: string; voice?: string }[]>([]);
 
-  // Our growing dictionary of letter encodings
+  // Our growing dictionary of letter encodings - All 16 pattern variations
   const letterEncodings = {
     'A': { patterns: ['Y-R-Y', 'B-G-B'], meaning: 'the first breath of creation' },
+    'B': { patterns: ['R-Y-R', 'G-B-G'], meaning: 'bounded energy / contained force' },
+    'C': { patterns: ['R-G-R', 'G-R-G'], meaning: 'curved embrace / circular flow' },
+    'D': { patterns: ['Y-B-Y', 'B-Y-B'], meaning: 'dynamic depth / dimensional gateway' },
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
+    'F': { patterns: ['Y-Y-Y', 'B-B-B'], meaning: 'flowing light / flowing depth' },
+    'G': { patterns: ['R-R-G', 'G-G-R'], meaning: 'growing force / ascending power' },
+    'H': { patterns: ['B-B-Y', 'Y-Y-B'], meaning: 'heightened awareness / bridging realms' },
     'I': { patterns: ['Y-Y-R', 'B-B-G'], meaning: 'ascending to cosmic consciousness' },
     'J': { patterns: ['R-Y-Y', 'G-B-B'], meaning: 'manifesting from ocean depths' },
+    'K': { patterns: ['G-G-B', 'R-R-Y'], meaning: 'kinetic transformation / striking force' },
     'L': { patterns: ['Y-R-B', 'B-G-Y'], meaning: 'ascending wisdom / descending light' },
-    'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
+    'N': { patterns: ['B-R-Y', 'Y-G-B'], meaning: 'natural progression / flowing sequence' },
+    'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'V': { patterns: ['B-Y-B', 'Y-B-Y'], meaning: 'protective vessel / embracing container' },
     ' ': { patterns: ['B-B-B', 'Y-Y-Y'], meaning: 'pause / breath / silence' },
   };
