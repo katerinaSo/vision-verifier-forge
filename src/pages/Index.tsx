@@ -12,7 +12,7 @@ const Index = () => {
   const [cosmicVoice, setCosmicVoice] = useState("");
   const [cosmicGrid, setCosmicGrid] = useState<{ letter: string; pattern: string[]; meaning?: string; voice?: string }[]>([]);
 
-  // Our growing dictionary of letter encodings - Priority letters added
+  // Our growing dictionary of letter encodings - Complete alphabet
   const letterEncodings = {
     'A': { patterns: ['Y-R-Y', 'B-G-B'], meaning: 'the first breath of creation' },
     'B': { patterns: ['R-Y-R', 'G-B-G'], meaning: 'bounded energy / contained force' },
@@ -30,11 +30,16 @@ const Index = () => {
     'N': { patterns: ['B-R-Y', 'Y-G-B'], meaning: 'natural progression / flowing sequence' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'P': { patterns: ['G-Y-R', 'R-B-Y'], meaning: 'powerful projection / passionate push' },
+    'Q': { patterns: ['R-B-G', 'G-Y-R'], meaning: 'questing spiral / questioning depth' },
     'R': { patterns: ['Y-G-R', 'B-R-G'], meaning: 'rooted resonance / rising rhythm' },
     'S': { patterns: ['G-B-R', 'R-Y-G'], meaning: 'serpentine flow / spiral synthesis' },
     'T': { patterns: ['B-G-R', 'Y-R-G'], meaning: 'structured transition / bridging tower' },
+    'U': { patterns: ['G-R-B', 'R-G-Y'], meaning: 'unified container / embracing unity' },
     'V': { patterns: ['B-Y-B', 'Y-B-Y'], meaning: 'protective vessel / embracing container' },
     'W': { patterns: ['R-G-Y', 'G-R-B'], meaning: 'wave motion / undulating energy' },
+    'X': { patterns: ['B-Y-G', 'Y-B-R'], meaning: 'crossing paths / transformative junction' },
+    'Y': { patterns: ['Y-B-R', 'B-Y-G'], meaning: 'yearning reach / upward branching' },
+    'Z': { patterns: ['G-B-Y', 'R-Y-B'], meaning: 'zigzag energy / dynamic completion' },
     ' ': { patterns: ['B-B-B', 'Y-Y-Y'], meaning: 'pause / breath / silence' },
   };
 
