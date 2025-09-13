@@ -62,6 +62,18 @@ All colors MUST be HSL.
     --lang-blue-soft: 240 45% 52%;
     --lang-yellow-soft: 45 55% 52%;
     
+    /* Voice variations - gentle (between soft and whisper) */
+    --lang-red-gentle: 0 30% 62%;
+    --lang-green-gentle: 120 25% 52%;
+    --lang-blue-gentle: 240 30% 57%;
+    --lang-yellow-gentle: 45 35% 57%;
+    
+    /* Voice variations - accent (slightly muted normal) */
+    --lang-red-accent: 0 75% 58%;
+    --lang-green-accent: 120 55% 48%;
+    --lang-blue-accent: 240 70% 53%;
+    --lang-yellow-accent: 45 85% 53%;
+    
     /* Voice variations - bold (high saturation) */
     --lang-red-bold: 0 95% 55%;
     --lang-green-bold: 120 85% 45%;
