@@ -187,53 +187,105 @@ const Index = () => {
                 <div className="mt-8 space-y-6">
                   <h4 className="text-center font-semibold text-lg">MAMA: Complete Dimensional Space</h4>
                   
-                  <div className="p-6 rounded-lg border bg-card/50">
-                    <div className="flex flex-col gap-2 items-center">
-                      {/* Arrange in rows of 4 */}
-                      {[0,1,2,3].map(row => (
-                        <div key={row} className="flex gap-0">
-                          {[
-                            [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
-                            [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
-                            [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
-                            [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
-                            [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
-                            [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
-                            [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
-                            [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
-                            [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
-                            [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
-                            [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
-                            [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
-                            [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
-                            [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
-                            [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
-                            [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
-                          ].slice(row * 4, (row + 1) * 4).map((patterns, index) => (
-                            <div key={index} className="flex gap-0">
-                              {/* MAMA word */}
-                              <div className="flex gap-0">
-                                {patterns.map((pattern, letterIndex) => (
-                                  <div key={letterIndex} className="flex flex-col">
-                                    {pattern.map((color, i) => (
-                                      <ColorSquare key={i} color={color} />
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* BBB Space Grid */}
+                    <div className="space-y-3">
+                      <h5 className="text-center font-medium">BBB Space Key</h5>
+                      <div className="p-4 rounded-lg border bg-card/50">
+                        <div className="flex flex-col gap-2 items-center">
+                          {[0,1,2,3].map(row => (
+                            <div key={row} className="flex gap-0">
+                              {[
+                                [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
+                                [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
+                                [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
+                                [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
+                                [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
+                                [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
+                                [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
+                                [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
+                                [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
+                                [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
+                                [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
+                                [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
+                                [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
+                                [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
+                                [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
+                                [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
+                              ].slice(row * 4, (row + 1) * 4).map((patterns, index) => (
+                                <div key={index} className="flex gap-0">
+                                  <div className="flex gap-0">
+                                    {patterns.map((pattern, letterIndex) => (
+                                      <div key={letterIndex} className="flex flex-col">
+                                        {pattern.map((color, i) => (
+                                          <ColorSquare key={i} color={color} />
+                                        ))}
+                                      </div>
                                     ))}
                                   </div>
-                                ))}
-                              </div>
-                              
-                              {/* Word space (except for last in row) */}
-                              {index < 3 && (
-                                <div className="flex flex-col mx-1">
-                                  {(index % 2 === 0 ? ['B','B','B'] : ['Y','Y','Y']).map((color, i) => (
-                                    <ColorSquare key={i} color={color} />
-                                  ))}
+                                  {index < 3 && (
+                                    <div className="flex flex-col mx-1">
+                                      {['B','B','B'].map((color, i) => (
+                                        <ColorSquare key={i} color={color} />
+                                      ))}
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              ))}
                             </div>
                           ))}
                         </div>
-                      ))}
+                      </div>
+                    </div>
+
+                    {/* YYY Space Grid */}
+                    <div className="space-y-3">
+                      <h5 className="text-center font-medium">YYY Space Key</h5>
+                      <div className="p-4 rounded-lg border bg-card/50">
+                        <div className="flex flex-col gap-2 items-center">
+                          {[0,1,2,3].map(row => (
+                            <div key={row} className="flex gap-0">
+                              {[
+                                [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
+                                [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
+                                [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
+                                [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
+                                [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
+                                [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
+                                [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
+                                [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
+                                [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']],
+                                [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']],
+                                [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']],
+                                [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']],
+                                [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']],
+                                [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']],
+                                [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']],
+                                [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']],
+                              ].slice(row * 4, (row + 1) * 4).map((patterns, index) => (
+                                <div key={index} className="flex gap-0">
+                                  <div className="flex gap-0">
+                                    {patterns.map((pattern, letterIndex) => (
+                                      <div key={letterIndex} className="flex flex-col">
+                                        {pattern.map((color, i) => (
+                                          <ColorSquare key={i} color={color} />
+                                        ))}
+                                      </div>
+                                    ))}
+                                  </div>
+                                  {index < 3 && (
+                                    <div className="flex flex-col mx-1">
+                                      {['Y','Y','Y'].map((color, i) => (
+                                        <ColorSquare key={i} color={color} />
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
