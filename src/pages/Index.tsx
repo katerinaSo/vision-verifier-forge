@@ -225,29 +225,29 @@ const Index = () => {
                       <h5 className="text-center font-medium">MAMA - Mixed Voice Expression</h5>
                       <div className="p-6 rounded-lg border bg-card/30">
                         <div className="flex gap-0 justify-center">
-                          {/* M - Deep Voice */}
+                          {/* M - Deep Voice (G-Y-G) */}
                           <div className="flex flex-col items-center">
                             <Badge variant="outline" className="text-xs font-bold mb-1">M</Badge>
                             <div className="flex flex-col gap-0">
-                              {['R','B','R'].map((color, i) => (
+                              {['G','Y','G'].map((color, i) => (
                                 <ColorSquare key={i} color={color} voice="deep" />
                               ))}
                             </div>
                             <span className="text-xs text-muted-foreground mt-1">deep</span>
                           </div>
                           
-                          {/* A - Bold Voice */}
+                          {/* A - Bold Voice (B-G-B) */}
                           <div className="flex flex-col items-center">
                             <Badge variant="outline" className="text-xs font-bold mb-1">A</Badge>
                             <div className="flex flex-col gap-0">
-                              {['Y','R','Y'].map((color, i) => (
+                              {['B','G','B'].map((color, i) => (
                                 <ColorSquare key={i} color={color} voice="bold" />
                               ))}
                             </div>
                             <span className="text-xs text-muted-foreground mt-1">bold</span>
                           </div>
                           
-                          {/* M - Normal Voice */}
+                          {/* M - Normal Voice (R-B-R) */}
                           <div className="flex flex-col items-center">
                             <Badge variant="outline" className="text-xs font-bold mb-1">M</Badge>
                             <div className="flex flex-col gap-0">
@@ -258,11 +258,11 @@ const Index = () => {
                             <span className="text-xs text-muted-foreground mt-1">normal</span>
                           </div>
                           
-                          {/* A - Whisper Voice */}
+                          {/* A - Whisper Voice (G-Y-G) */}
                           <div className="flex flex-col items-center">
                             <Badge variant="outline" className="text-xs font-bold mb-1">A</Badge>
                             <div className="flex flex-col gap-0">
-                              {['Y','R','Y'].map((color, i) => (
+                              {['G','Y','G'].map((color, i) => (
                                 <ColorSquare key={i} color={color} voice="whisper" />
                               ))}
                             </div>
@@ -272,7 +272,7 @@ const Index = () => {
                         
                         <div className="mt-4 text-center">
                           <p className="text-xs text-muted-foreground">
-                            One word, four voices: Deep → Bold → Normal → Whisper
+                            Like a child speaking: Deep call → Bold recognition → Stable center → Tender whisper
                           </p>
                         </div>
                       </div>
