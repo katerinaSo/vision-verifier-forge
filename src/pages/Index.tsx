@@ -161,10 +161,22 @@ const Index = () => {
         </div>
 
         {/* Encoded Output */}
-        {/* Word Grid Demonstrations */}
         {encodedLetters.length > 0 && (
           <Card>
+            <CardHeader>
+              <CardTitle>Encoded Text</CardTitle>
+            </CardHeader>
             <CardContent className="pt-6">
+              <div className="flex flex-wrap gap-4 justify-center mb-6">
+                {encodedLetters.map((letter, index) => (
+                  <VerticalLetter
+                    key={index}
+                    letter={letter.letter}
+                    pattern={letter.pattern}
+                    meaning={letter.meaning}
+                  />
+                ))}
+              </div>
               
               {/* Special demonstration for OM */}
               {inputText.toUpperCase().includes('OM') && (
