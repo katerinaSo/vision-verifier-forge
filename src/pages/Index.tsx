@@ -182,54 +182,59 @@ const Index = () => {
                 ))}
               </div>
               
-              {/* Complete MAMA Variations Experiment */}
+              {/* Complete MAMA Variations with Word Spaces */}
               {inputText.toUpperCase().includes('MAMA') && (
                 <div className="mt-8 space-y-6">
-                  <h4 className="text-center font-semibold text-lg">Complete MAMA System: All 16 Variations</h4>
+                  <h4 className="text-center font-semibold text-lg">MAMA: Complete Dimensional Space</h4>
                   
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {/* All 16 possible combinations */}
-                    {[
-                      { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], id: "1" },
-                      { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], id: "2" },
-                      { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], id: "3" },
-                      { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], id: "4" },
-                      { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], id: "5" },
-                      { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']], id: "6" },
-                      { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], id: "7" },
-                      { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], id: "8" },
-                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], id: "9" },
-                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], id: "10" },
-                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], id: "11" },
-                      { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], id: "12" },
-                      { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], id: "13" },
-                      { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']], id: "14" },
-                      { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], id: "15" },
-                      { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], id: "16" },
-                    ].map((variation) => (
-                      <div key={variation.id} className="p-2 rounded border bg-card">
-                        <div className="text-xs text-center mb-2 font-mono">#{variation.id}</div>
-                        <div className="flex gap-0 justify-center">
-                          {variation.patterns.map((pattern, letterIndex) => (
-                            <div key={letterIndex} className="flex flex-col items-center">
-                              <Badge variant="outline" className="text-xs mb-1">
-                                {['M','A','M','A'][letterIndex]}
-                              </Badge>
-                              <div className="flex flex-col">
+                  <div className="p-6 rounded-lg border bg-card/50">
+                    <div className="flex flex-wrap gap-0 justify-center items-end">
+                      {[
+                        { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['R','B','R'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
+                        { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['R','B','R'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], space: ['Y','Y','Y'] },
+                        { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['R','B','R'], ['B','G','B'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
+                        { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['R','B','R'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], space: ['Y','Y','Y'] },
+                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
+                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['G','Y','G'], ['Y','R','Y'], ['G','Y','G'], ['B','G','B']], space: ['Y','Y','Y'] },
+                        { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['G','Y','G'], ['B','G','B'], ['R','B','R'], ['B','G','B']], space: ['Y','Y','Y'] },
+                        { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['Y','R','Y']], space: ['B','B','B'] },
+                        { patterns: [['G','Y','G'], ['B','G','B'], ['G','Y','G'], ['B','G','B']], space: null },
+                      ].map((variation, index) => (
+                        <div key={index} className="flex gap-0">
+                          {/* MAMA word */}
+                          <div className="flex gap-0">
+                            {variation.patterns.map((pattern, letterIndex) => (
+                              <div key={letterIndex} className="flex flex-col">
                                 {pattern.map((color, i) => (
                                   <ColorSquare key={i} color={color} />
                                 ))}
                               </div>
+                            ))}
+                          </div>
+                          
+                          {/* Word space separator (except for last variation) */}
+                          {variation.space && (
+                            <div className="flex flex-col mx-1">
+                              {variation.space.map((color, i) => (
+                                <ColorSquare key={i} color={color} />
+                              ))}
                             </div>
-                          ))}
+                          )}
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                   
                   <div className="text-center text-sm text-muted-foreground">
-                    <p>16 complete variations - each a unique expression in the visual language</p>
-                    <p>What meanings emerge from these different flows and relationships?</p>
+                    <p>One unified composition: All possible MAMAs flowing through visual space</p>
+                    <p>BBB and YYY monoliths create rhythm between variations</p>
                   </div>
                 </div>
               )}
