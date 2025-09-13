@@ -10,7 +10,7 @@ const Index = () => {
 
   // Our growing dictionary of letter encodings
   const letterEncodings = {
-    'A': { patterns: ['Y-R-Y', 'R-Y-R'], meaning: 'the first breath of creation' },
+    'A': { patterns: ['Y-R-Y', 'B-G-B'], meaning: 'the first breath of creation' },
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
@@ -188,27 +188,27 @@ const Index = () => {
                   <h4 className="text-center font-semibold text-lg">Word Variations: MAMA - Emotional Keys</h4>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Nurturing Key - soft patterns */}
+                    {/* Major Key - using first patterns */}
                     <WordGrid
                       keyType="major"
                       spacing="gap-0"
                       letters={[
-                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "gentle embrace" },
+                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "discovery pattern" },
                         { letter: "A", pattern: ['Y', 'R', 'Y'], meaning: "first breath" },
-                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "gentle embrace" },
+                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "discovery pattern" },
                         { letter: "A", pattern: ['Y', 'R', 'Y'], meaning: "first breath" },
                       ]}
                     />
                     
-                    {/* Protective Key - strong patterns */}
+                    {/* Minor Key - using complementary patterns */}
                     <WordGrid
                       keyType="minor"
                       spacing="gap-0"
                       letters={[
-                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "fierce protection" },
-                        { letter: "A", pattern: ['R', 'Y', 'R'], meaning: "warrior light" },
-                        { letter: "M", pattern: ['R', 'B', 'R'], meaning: "fierce protection" },
-                        { letter: "A", pattern: ['R', 'Y', 'R'], meaning: "warrior light" },
+                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "complementary flow" },
+                        { letter: "A", pattern: ['B', 'G', 'B'], meaning: "deep creation" },
+                        { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "complementary flow" },
+                        { letter: "A", pattern: ['B', 'G', 'B'], meaning: "deep creation" },
                       ]}
                     />
                   </div>
