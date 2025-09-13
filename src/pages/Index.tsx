@@ -241,47 +241,59 @@ const Index = () => {
                       <div className="p-6 rounded-lg border bg-card/30">
                         <div className="flex gap-0 justify-center">
                           {/* M - Deep Voice (G-Y-G) */}
-                          <div className="flex flex-col items-center">
-                            <Badge variant="outline" className="text-xs font-bold mb-1">M</Badge>
+                          <div className="flex flex-col">
                             <div className="flex flex-col gap-0">
                               {['G','Y','G'].map((color, i) => (
                                 <ColorSquare key={i} color={color} voice="deep" />
                               ))}
                             </div>
-                            <span className="text-xs text-muted-foreground mt-1">deep</span>
                           </div>
                           
                           {/* A - Accent Voice (Y-R-Y) - Slightly Muted */}
-                          <div className="flex flex-col items-center">
-                            <Badge variant="outline" className="text-xs font-bold mb-1">A</Badge>
+                          <div className="flex flex-col">
                             <div className="flex flex-col gap-0">
                               {['Y','R','Y'].map((color, i) => (
                                 <ColorSquare key={i} color={color} voice="accent" />
                               ))}
                             </div>
-                            <span className="text-xs text-muted-foreground mt-1">accent</span>
                           </div>
                           
                           {/* M - Gentle Voice (R-B-R) */}
-                          <div className="flex flex-col items-center">
-                            <Badge variant="outline" className="text-xs font-bold mb-1">M</Badge>
+                          <div className="flex flex-col">
                             <div className="flex flex-col gap-0">
                               {['R','B','R'].map((color, i) => (
                                 <ColorSquare key={i} color={color} voice="gentle" />
                               ))}
                             </div>
-                            <span className="text-xs text-muted-foreground mt-1">gentle</span>
                           </div>
                           
                           {/* A - Whisper Voice (G-Y-G) */}
-                          <div className="flex flex-col items-center">
-                            <Badge variant="outline" className="text-xs font-bold mb-1">A</Badge>
+                          <div className="flex flex-col">
                             <div className="flex flex-col gap-0">
                               {['G','Y','G'].map((color, i) => (
                                 <ColorSquare key={i} color={color} voice="whisper" />
                               ))}
                             </div>
-                            <span className="text-xs text-muted-foreground mt-1">whisper</span>
+                          </div>
+                        </div>
+                        
+                        {/* Labels below the unified image */}
+                        <div className="flex gap-0 justify-center mt-2">
+                          <div className="flex flex-col items-center" style={{width: '32px'}}>
+                            <Badge variant="outline" className="text-xs font-bold mb-1">M</Badge>
+                            <span className="text-xs text-muted-foreground">deep</span>
+                          </div>
+                          <div className="flex flex-col items-center" style={{width: '32px'}}>
+                            <Badge variant="outline" className="text-xs font-bold mb-1">A</Badge>
+                            <span className="text-xs text-muted-foreground">accent</span>
+                          </div>
+                          <div className="flex flex-col items-center" style={{width: '32px'}}>
+                            <Badge variant="outline" className="text-xs font-bold mb-1">M</Badge>
+                            <span className="text-xs text-muted-foreground">gentle</span>
+                          </div>
+                          <div className="flex flex-col items-center" style={{width: '32px'}}>
+                            <Badge variant="outline" className="text-xs font-bold mb-1">A</Badge>
+                            <span className="text-xs text-muted-foreground">whisper</span>
                           </div>
                         </div>
                         
