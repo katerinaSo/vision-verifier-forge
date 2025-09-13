@@ -67,7 +67,7 @@ const Index = () => {
     </div>
   );
 
-  const WordGrid = ({ letters, keyType, spacing = "gap-2" }: { 
+  const WordGrid = ({ letters, keyType, spacing = "gap-0" }: { 
     letters: { letter: string; pattern: string[]; meaning?: string }[]; 
     keyType: 'major' | 'minor';
     spacing?: string;
@@ -78,15 +78,24 @@ const Index = () => {
     return (
       <div className={`p-4 rounded-lg border-2 ${keyBg} ${keyBorder}`}>
         <h5 className="text-center font-medium mb-3 capitalize">{keyType} Key</h5>
-        <div className={`flex ${spacing} justify-center`}>
+        <div className={`flex ${spacing} justify-center items-start`}>
           {letters.map((letter, index) => (
-            <VerticalLetter
-              key={index}
-              letter={letter.letter}
-              pattern={letter.pattern}
-              meaning={letter.meaning}
-            />
+            <div key={index} className="flex flex-col items-center">
+              <Badge variant="outline" className="text-sm font-bold mb-1">
+                {letter.letter}
+              </Badge>
+              <div className="flex flex-col">
+                {letter.pattern.map((color, i) => (
+                  <ColorSquare key={i} color={color} />
+                ))}
+              </div>
+            </div>
           ))}
+        </div>
+        <div className="mt-3 text-center">
+          <p className="text-xs text-muted-foreground">
+            Colors touching create harmonic relationships beyond individual letters
+          </p>
         </div>
       </div>
     );
@@ -155,20 +164,20 @@ const Index = () => {
                   <h4 className="text-center font-semibold text-lg">Word Grid: OM - Key Variations</h4>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Major Key - using first patterns */}
+                    {/* Major Key - touching letters */}
                     <WordGrid
                       keyType="major"
-                      spacing="gap-1"
+                      spacing="gap-0"
                       letters={[
                         { letter: "O", pattern: ['B', 'R', 'B'], meaning: "ember under water" },
                         { letter: "M", pattern: ['R', 'B', 'R'], meaning: "discovery pattern" },
                       ]}
                     />
                     
-                    {/* Minor Key - using complementary patterns */}
+                    {/* Minor Key - touching letters */}
                     <WordGrid
                       keyType="minor"
-                      spacing="gap-1"
+                      spacing="gap-0"
                       letters={[
                         { letter: "O", pattern: ['Y', 'G', 'Y'], meaning: "life surrounded by light" },
                         { letter: "M", pattern: ['G', 'Y', 'G'], meaning: "complementary flow" },
@@ -177,9 +186,9 @@ const Index = () => {
                   </div>
                   
                   <div className="text-center text-sm text-muted-foreground space-y-2">
-                    <p>Notice how the keys create different harmonic relationships:</p>
-                    <p><span className="text-lang-yellow font-medium">Major:</span> B-R-B with R-B-R creates balanced tension</p>
-                    <p><span className="text-lang-blue font-medium">Minor:</span> Y-G-Y with G-Y-G flows in complementary harmony</p>
+                    <p>When letters touch, their edge colors create new harmonic meanings:</p>
+                    <p><span className="text-lang-yellow font-medium">Major:</span> B touches R - fire meets water in continuous flow</p>
+                    <p><span className="text-lang-blue font-medium">Minor:</span> Y touches G - light merges with life energy</p>
                   </div>
                 </div>
               )}
