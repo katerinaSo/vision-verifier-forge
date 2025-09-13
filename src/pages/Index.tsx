@@ -10,6 +10,7 @@ const Index = () => {
 
   // Our growing dictionary of letter encodings
   const letterEncodings = {
+    'A': { patterns: ['Y-R-Y', 'R-Y-R'], meaning: 'the first breath of creation' },
     'E': { patterns: ['R-R-R', 'G-G-G'], meaning: 'rhythm monolith' },
     'O': { patterns: ['B-R-B', 'Y-G-Y'], meaning: 'ember under water / life surrounded by light' },
     'M': { patterns: ['R-B-R', 'G-Y-G'], meaning: 'discovery pattern / complementary flow' },
