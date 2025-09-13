@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import visualLanguageAbstract from "@/assets/visual-language-abstract.jpg";
 
 const Index = () => {
   const [inputText, setInputText] = useState("");
@@ -300,6 +301,21 @@ const Index = () => {
                   <div className="text-center text-sm text-muted-foreground">
                     <p>One unified composition: All possible MAMAs flowing through visual space</p>
                     <p>BBB and YYY monoliths create rhythm between variations</p>
+                  </div>
+                  
+                  {/* Generated Abstract Art */}
+                  <div className="mt-8 space-y-4">
+                    <h5 className="text-center font-semibold text-lg">Abstract Interpretation</h5>
+                    <div className="rounded-lg overflow-hidden border">
+                      <img 
+                        src={visualLanguageAbstract} 
+                        alt="Abstract painting inspired by the visual language system - flowing color blocks representing MAMA variations with harmonic relationships"
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    <p className="text-center text-sm text-muted-foreground">
+                      AI-generated abstract painting interpreting your visual language system
+                    </p>
                   </div>
                 </div>
               )}
