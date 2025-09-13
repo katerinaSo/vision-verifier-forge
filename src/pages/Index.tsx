@@ -65,8 +65,8 @@ const Index = () => {
           chosenPattern = encoding.patterns[0].split('-'); // R-B-R
           chosenVoice = 'normal';
         } else if (letter === 'O') {
-          // O: Choose Y-G-Y (life surrounded by light) - the wonder
-          chosenPattern = encoding.patterns[1].split('-'); // Y-G-Y
+          // O: Choose B-R-B (ember under water) - using only blues and reds for organic MOO
+          chosenPattern = encoding.patterns[0].split('-'); // B-R-B
           
           // Calculate total O's and create brightness-based dissolve
           const totalOs = letters.filter(l => l === 'O').length;
