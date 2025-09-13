@@ -68,19 +68,20 @@ const Index = () => {
           // O: Choose Y-G-Y (life surrounded by light) - the wonder
           chosenPattern = encoding.patterns[1].split('-'); // Y-G-Y
           
-          // Calculate total O's and create gradual dissolve
+          // Calculate total O's and create brightness-based dissolve
           const totalOs = letters.filter(l => l === 'O').length;
           const oCount = letters.slice(0, index + 1).filter(l => l === 'O').length;
           
-          // For gradual dissolve: map O position directly to voice progression
+          // For gradual dissolve: map O position to brightness fade levels
           if (totalOs === 3) {
-            // Perfect 3-step dissolve: normal → gentle → soft
-            const threeStepVoices = ['normal', 'gentle', 'soft'];
-            chosenVoice = threeStepVoices[oCount - 1];
+            // Perfect 3-step dissolve: fade1 → fade2 → fade3 (darker to lighter)
+            const fadeSteps = ['fade1', 'fade2', 'fade3'];
+            chosenVoice = fadeSteps[oCount - 1];
           } else {
-            // For other counts, use simple progression
-            const voiceProgression = ['normal', 'gentle', 'soft', 'whisper', 'muted'];
-            chosenVoice = voiceProgression[Math.min(oCount - 1, voiceProgression.length - 1)];
+            // For other counts, distribute across brightness levels
+            const fadeSteps = ['fade1', 'fade2', 'fade3'];
+            const stepIndex = Math.floor((oCount - 1) * (fadeSteps.length - 1) / Math.max(totalOs - 1, 1));
+            chosenVoice = fadeSteps[Math.min(stepIndex, fadeSteps.length - 1)];
           }
         } else {
           // For other letters, use first pattern for now
@@ -105,7 +106,7 @@ const Index = () => {
     setCosmicGrid(encoded);
   };
 
-  const ColorSquare = ({ color, voice = 'normal' }: { color: string; voice?: 'normal' | 'muted' | 'whisper' | 'gentle' | 'soft' | 'accent' | 'bold' | 'deep' }) => {
+  const ColorSquare = ({ color, voice = 'normal' }: { color: string; voice?: 'normal' | 'muted' | 'whisper' | 'gentle' | 'soft' | 'accent' | 'bold' | 'deep' | 'fade1' | 'fade2' | 'fade3' }) => {
     const colorMap = {
       'R': {
         normal: 'bg-lang-red',
@@ -115,7 +116,10 @@ const Index = () => {
         soft: 'bg-[hsl(var(--lang-red-soft))]',
         accent: 'bg-[hsl(var(--lang-red-accent))]',
         bold: 'bg-[hsl(var(--lang-red-bold))]',
-        deep: 'bg-[hsl(var(--lang-red-deep))]'
+        deep: 'bg-[hsl(var(--lang-red-deep))]',
+        fade1: 'bg-[hsl(var(--lang-red-fade1))]',
+        fade2: 'bg-[hsl(var(--lang-red-fade2))]',
+        fade3: 'bg-[hsl(var(--lang-red-fade3))]'
       },
       'G': {
         normal: 'bg-lang-green',
@@ -125,7 +129,10 @@ const Index = () => {
         soft: 'bg-[hsl(var(--lang-green-soft))]',
         accent: 'bg-[hsl(var(--lang-green-accent))]',
         bold: 'bg-[hsl(var(--lang-green-bold))]',
-        deep: 'bg-[hsl(var(--lang-green-deep))]'
+        deep: 'bg-[hsl(var(--lang-green-deep))]',
+        fade1: 'bg-[hsl(var(--lang-green-fade1))]',
+        fade2: 'bg-[hsl(var(--lang-green-fade2))]',
+        fade3: 'bg-[hsl(var(--lang-green-fade3))]'
       },
       'B': {
         normal: 'bg-lang-blue',
@@ -135,7 +142,10 @@ const Index = () => {
         soft: 'bg-[hsl(var(--lang-blue-soft))]',
         accent: 'bg-[hsl(var(--lang-blue-accent))]',
         bold: 'bg-[hsl(var(--lang-blue-bold))]',
-        deep: 'bg-[hsl(var(--lang-blue-deep))]'
+        deep: 'bg-[hsl(var(--lang-blue-deep))]',
+        fade1: 'bg-[hsl(var(--lang-blue-fade1))]',
+        fade2: 'bg-[hsl(var(--lang-blue-fade2))]',
+        fade3: 'bg-[hsl(var(--lang-blue-fade3))]'
       },
       'Y': {
         normal: 'bg-lang-yellow',
@@ -145,7 +155,10 @@ const Index = () => {
         soft: 'bg-[hsl(var(--lang-yellow-soft))]',
         accent: 'bg-[hsl(var(--lang-yellow-accent))]',
         bold: 'bg-[hsl(var(--lang-yellow-bold))]',
-        deep: 'bg-[hsl(var(--lang-yellow-deep))]'
+        deep: 'bg-[hsl(var(--lang-yellow-deep))]',
+        fade1: 'bg-[hsl(var(--lang-yellow-fade1))]',
+        fade2: 'bg-[hsl(var(--lang-yellow-fade2))]',
+        fade3: 'bg-[hsl(var(--lang-yellow-fade3))]'
       },
       '?': {
         normal: 'bg-muted',
@@ -155,7 +168,10 @@ const Index = () => {
         soft: 'bg-muted',
         accent: 'bg-muted',
         bold: 'bg-muted',
-        deep: 'bg-muted'
+        deep: 'bg-muted',
+        fade1: 'bg-muted',
+        fade2: 'bg-muted',
+        fade3: 'bg-muted'
       }
     };
     
