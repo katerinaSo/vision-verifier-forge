@@ -528,55 +528,55 @@ const Index = () => {
                   <div className="mt-6 space-y-6">
                     <h4 className="text-center font-medium text-lg">Sacred Translation: {cosmicVoice}</h4>
                     
-                    {/* Major Key - Гимн Творения */}
+                    {/* Unified Sacred Grid - Both Keys Together */}
                     <div className="space-y-3">
                       <div className="text-center">
                         <p className="text-sm font-medium text-muted-foreground">
-                          Major Key - Гимн Творения (Hymn of Creation)
+                          Sacred MOO - Complete Energy Flow
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          Foundation-Awe-Awe: Earth expressing eternal wonder at existence
+                          Major (Creation Hymn) above, Minor (Being Meditation) below - Connected as one sacred image
                         </p>
                       </div>
-                      <div className="flex gap-1 justify-center flex-wrap p-4 rounded-lg bg-lang-yellow/10 border border-lang-yellow/30">
-                        {cosmicGrid.map((letter, letterIndex) => (
-                          <div key={`major-${letterIndex}`} className="flex flex-col items-center gap-1">
-                            <Badge variant="outline" className="text-xs font-bold">
-                              {letter.letter}
-                            </Badge>
-                            <div className="flex flex-col gap-0">
-                              {letter.pattern.map((color, colorIndex) => (
-                                <ColorSquare key={`${letterIndex}-${colorIndex}`} color={color} voice="bold" />
-                              ))}
-                            </div>
+                      
+                      <div className="flex justify-center">
+                        <div className="p-6 rounded-lg bg-gradient-to-b from-lang-yellow/10 via-transparent to-lang-blue/10 border border-muted/30">
+                          {/* Major Key Row - Bold voice */}
+                          <div className="flex gap-0 justify-center mb-0">
+                            {cosmicGrid.map((letter, letterIndex) => (
+                              <div key={`major-${letterIndex}`} className="flex flex-col">
+                                <div className="flex flex-col gap-0">
+                                  {letter.pattern.map((color, colorIndex) => (
+                                    <ColorSquare key={`major-${letterIndex}-${colorIndex}`} color={color} voice="bold" />
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Minor Key - Медитация Бытия */}
-                    <div className="space-y-3">
-                      <div className="text-center">
-                        <p className="text-sm font-medium text-muted-foreground">
-                          Minor Key - Медитация Бытия (Meditation of Being)
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          Silent, deep vibration felt within - the universe's inner hum
-                        </p>
-                      </div>
-                      <div className="flex gap-1 justify-center flex-wrap p-4 rounded-lg bg-lang-blue/10 border border-lang-blue/30">
-                        {cosmicGrid.map((letter, letterIndex) => (
-                          <div key={`minor-${letterIndex}`} className="flex flex-col items-center gap-1">
-                            <Badge variant="outline" className="text-xs font-bold">
-                              {letter.letter}
-                            </Badge>
-                            <div className="flex flex-col gap-0">
-                              {letter.pattern.map((color, colorIndex) => (
-                                <ColorSquare key={`${letterIndex}-${colorIndex}`} color={color} voice="whisper" />
-                              ))}
-                            </div>
+                          
+                          {/* Minor Key Row - Whisper voice, directly connected */}
+                          <div className="flex gap-0 justify-center">
+                            {cosmicGrid.map((letter, letterIndex) => (
+                              <div key={`minor-${letterIndex}`} className="flex flex-col">
+                                <div className="flex flex-col gap-0">
+                                  {letter.pattern.map((color, colorIndex) => (
+                                    <ColorSquare key={`minor-${letterIndex}-${colorIndex}`} color={color} voice="whisper" />
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
+                          
+                          {/* Labels below the unified sacred image */}
+                          <div className="flex gap-0 justify-center mt-3">
+                            {cosmicGrid.map((letter, letterIndex) => (
+                              <div key={`label-${letterIndex}`} className="flex flex-col items-center" style={{width: '32px'}}>
+                                <Badge variant="outline" className="text-xs font-bold mb-1">{letter.letter}</Badge>
+                                <span className="text-xs text-muted-foreground text-center">{letter.meaning?.split(' ')[0]}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                     
